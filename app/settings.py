@@ -9,15 +9,19 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
-from pathlib import Path
+sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
+import sys
 import os
 import environ
+from pathlib import Path
+from nucleus.management.compilation import Compilation
+
 
 env = environ.Env(
   # set casting, default value
   DEBUG=(bool, False)
 )
+compilation = Compilation()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +33,7 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-qo8)9ngx487df$bfx8y(vc8&2eqqm^qshbh-45!o4y7s1l4ms('
+
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,15 +43,27 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+installed_apps = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nucleus',
 ]
+
+# Read the dynamic apps list from the file
+dynamicappfile = os.path.join(compilation.compiled_dir, compilation.apps_file)
+dynamic_apps = []
+if os.path.exists(dynamicappfile):
+    with open(dynamicappfile, 'r') as file:
+        dynamic_apps = [app.strip() for app in file.readlines()]
+
+
+# Add the dynamic apps to INSTALLED_APPS if not already present
+INSTALLED_APPS = installed_apps + [app for app in dynamic_apps if app not in installed_apps]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,8 +101,15 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env("DB_NAME"),  
+        'USER': env("DB_USER"),  
+        'PASSWORD': env("DB_PASSWORD"),  
+        'HOST': env("DB_HOST"),  
+        'PORT': env("DB_PORT"),  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        } 
     }
 }
 
