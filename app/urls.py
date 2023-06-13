@@ -15,8 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+import json
+
+
+def get_active_modules():
+    with open('mainConfig.json', 'r') as config_file:
+        config_data = json.load(config_file)
+
+    active_modules = [module for module, status in config_data.items() if status == 'active']
+
+    return active_modules
+
+active_modules = get_active_modules()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+for module in active_modules:
+    urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))

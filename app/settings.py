@@ -9,12 +9,13 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
+
 import sys
 import os
 import environ
 from pathlib import Path
 from nucleus.management.compilation import Compilation
+sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
 
 
 env = environ.Env(
