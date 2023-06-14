@@ -116,5 +116,3 @@ class Command(TemplateCommand):
              json.dump(dictionary, config_file, indent=4)
 
         self.stdout.write(self.style.SUCCESS(f"App '{app_name}' created successfully in '{target}'."))
-
-        #
