@@ -33,7 +33,6 @@ def index(request,slug_url):
 
     block = Blocks.objects.get(slug=slug_url)
 
-    
     block_collection = find_block_ids(block.content)
 
     return HttpResponse(block_collection)

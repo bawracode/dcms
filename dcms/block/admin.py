@@ -4,4 +4,4 @@ from .models import Blocks
 # Register your models here.
 @admin.register(Blocks)
 class BlockAdmin(admin.ModelAdmin):
-    list_display = ("id",'slug', 'status', "content",'created_at', 'updated_at',"formatted_full_url")
+    list_display = ("id",'slug', 'status','created_at', 'updated_at',"formatted_full_url")
