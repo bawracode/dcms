@@ -6,7 +6,7 @@ from nucleus.management.compilation import Compilation
 class Command(BaseCommand):
 
     compilation = Compilation()
-    help = 'Add all apps to compiled file '
+    help = 'Add all apps to compiled file'
 
     def handle(self, *args, **options):
         # Get the path of the directory containing the settings.py file
