@@ -22,10 +22,7 @@ class Blocks(models.Model):
         indexes = [
             models.Index(fields=['slug']),
         ]
-
-    def full_url(self):
-        return f"http://127.0.0.1:8000/block/render/{self.slug}"
-    
+        
     def formatted_full_url(self):
         full_url = f"http://127.0.0.1:8000/block/cms/{self.slug}"
         return format_html('<a href="{}">{}</a>', full_url, full_url)
