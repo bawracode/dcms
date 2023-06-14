@@ -1,5 +1,5 @@
 from django.db import models
-from tinymce import models as tinymce_models
+from static.tinymce import models as tinymce_models
 
 # Create your models here.
 class Blocks(models.Model):
