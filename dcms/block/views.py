@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import re
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Block
+from .models import Blocks
 
 def find_block_ids(string):
     pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
@@ -13,7 +13,7 @@ def find_block_ids(string):
         result_string = string
         for block_id in block_ids:
             try:
-                block = Block.objects.get(id=block_id, status=True)
+                block = Blocks.objects.get(id=block_id, status=True)
                 result_string = result_string.replace('{{block id=' + str(block_id) + '}}', block.content)
                 
                 # Recursive search in the result_string
@@ -24,9 +24,6 @@ def find_block_ids(string):
         return result_string
     else:
         return string
-
-
-
 
 
 # Create your views here.
