@@ -52,6 +52,8 @@ installed_apps = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nucleus',
+    'dcms.block',
+    'dcms.pages'
 ]
 
 # Read the dynamic apps list from the file
