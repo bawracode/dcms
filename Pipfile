@@ -9,6 +9,7 @@ django-environ = "*"
 mysqlclient = "*"
 environ = "*"
 path = "*"
+django-cms = "*"
 
 [dev-packages]
 
