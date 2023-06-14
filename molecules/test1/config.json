@@ -1,0 +1,12 @@
+{
+    "app_name": "test1",
+    "app_path": "C:\\Users\\jigne\\Desktop\\django_cms\\molecules\\test1",
+    "templates_path": "C:\\Users\\jigne\\Desktop\\django_cms\\molecules\\test1",
+    "status": 1,
+    "js_file": [
+        {
+            "src": "/static/js/test1/x.js",
+            "defer": 0
+        }
+    ]
+}

@@ -15,23 +15,40 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path,include
+
+from django.conf import settings
 import json
+import os
+import environ
+from django.conf.urls.static import static
 
+env = environ.Env(
+  DEBUG=(bool, False)
+)
 
-def get_active_modules():
-    with open('mainConfig.json', 'r') as config_file:
-        config_data = json.load(config_file)
+environ.Env.read_env(env_file=os.path.join(settings.BASE_DIR, ".env"))
 
-    active_modules = [module for module, status in config_data.items() if status == 'active']
+app_folder = env("APP_FOLDER")
 
-    return active_modules
+#config file import and return path url
+def return_path_url():
+    with open(settings.BASE_DIR.joinpath("main_config.json")) as f:
+        temp_file = json.loads(f.read())
+            
 
-active_modules = get_active_modules()
+    temp_str = """path("{0}/",include("{1}.{0}.urls")),"""
+
+    online_url = [key for key in temp_file.keys() if temp_file[key]==1]
+
+    molecular_apps = [eval(temp_str.format(app,app_folder)) for app in online_url]
+
+    return molecular_apps
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+    path("admin/", admin.site.urls),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-for module in active_modules:
-    urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
+for i in return_path_url():
+    urlpatterns.append(i[0])

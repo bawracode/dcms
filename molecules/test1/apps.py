@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BlockConfig(AppConfig):
+class Test1Config(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "dcms.block"
+    name = "molecules.test1"
