@@ -3,6 +3,8 @@ from django.http import HttpResponse
 import re
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Blocks
+# render string to html
+
 
 def find_block_ids(string):
     pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
@@ -13,7 +15,7 @@ def find_block_ids(string):
         result_string = string
         for block_id in block_ids:
             try:
-                block = Blocks.objects.get(id=block_id, status=True)
+                block = Blocks.objects.get(id=block_id, status=1)
                 result_string = result_string.replace('{{block id=' + str(block_id) + '}}', block.content)
                 
                 # Recursive search in the result_string
@@ -27,21 +29,11 @@ def find_block_ids(string):
 
 
 # Create your views here.
-def index(request):
-    text = "{{block id=4}}"
-    block_id = find_block_ids(text)
+def index(request,slug_url):
 
-    if block_id is not None:
-        print(f"Found block id: {block_id}")
-    else:
-        print("No block id found.")
+    block = Blocks.objects.get(slug=slug_url)
 
-    print(block_id)
-    return HttpResponse(block_id)
-
-
-def dynamic_template_view(request, template_name):
-    context = {}  # Additional context data to pass to the template
     
-    return HttpResponse(template_name)
-    return render(request, template_name, context)
+    block_collection = find_block_ids(block.content)
+
+    return HttpResponse(block_collection)

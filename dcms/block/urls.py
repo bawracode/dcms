@@ -2,6 +2,5 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('render/<str:template_name>/', views.dynamic_template_view, name='dynamic_template_view'),
-    path("index/", views.index, name="index")
+    path('cms/<str:slug_url>/', views.index, name='dynamic_template_view'),
 ]
