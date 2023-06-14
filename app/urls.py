@@ -31,6 +31,7 @@ active_modules = get_active_modules()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 for module in active_modules:

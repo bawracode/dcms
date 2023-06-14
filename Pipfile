@@ -10,6 +10,7 @@ mysqlclient = "*"
 environ = "*"
 path = "*"
 django-cms = "*"
+django-tinymce = "*"
 
 [dev-packages]
 
