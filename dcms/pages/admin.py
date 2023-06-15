@@ -46,7 +46,7 @@ class PagesForm(forms.ModelForm):
 
 class CustomePageAdmin(admin.ModelAdmin):
     form = PagesForm
-    list_display = ('title', 'slug', 'status', 'created_at', 'updated_at')
+    list_display = ('title', 'slug', 'status', 'created_at', 'updated_at','formatted_full_url')
     list_filter = ('status', 'created_at', 'updated_at')
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
