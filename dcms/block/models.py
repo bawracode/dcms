@@ -15,7 +15,7 @@ class Blocks(models.Model):
                                     choices =(
                                     (1, 'Active'), (0, 'Inactive')
                                     ))
-    block_status = models.IntegerField(default = 1,
+    status = models.IntegerField(default = 1,
                                    blank = True,
                                     null = True,
                                     help_text ='1 - system_define, 0 - custom_define', 

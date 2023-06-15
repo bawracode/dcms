@@ -6,10 +6,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Blocks
 from django.template import Template, RequestContext
 # render string to html
+from dcms.cms_logs.models import *
 
 
 def find_block_ids(string):
-    pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
+    pattern = r'\{\{\s*block\s+id=[\'"]?\s*(\s\d+\s)\s*[\'"]?\s*\}\}'
+
     matches = re.findall(pattern, string)
     
     if matches:
@@ -41,4 +43,6 @@ def index(request,slug_url):
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})
     rendered_template = template.render(context)
+    PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
+
     return HttpResponse(rendered_template)

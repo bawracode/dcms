@@ -57,6 +57,7 @@ installed_apps = [
     'nucleus',
     'dcms.block',
     'dcms.pages',
+    'dcms.cms_logs',
 
 ]
 
