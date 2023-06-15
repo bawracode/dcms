@@ -9,18 +9,16 @@ from django.template import Template, RequestContext
 
 
 def find_block_ids(string):
-    pattern = r"\{\{\s*block\s+id\s*=\s*['\"]?\s*(\d+)\s*['\"]?\s*\}\}"
+    pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
     matches = re.findall(pattern, string)
     
     if matches:
         block_ids = [int(match) for match in matches]
         result_string = string
-        print(string)
         for block_id in block_ids:
             try:
                 block = Blocks.objects.get(id=block_id, status=1)
-                pattern_with_spaces = r"\{\{\s*block\s+id\s*=\s*['\"]?\s*" + str(block_id) + r"\s*['\"]?\s*\}\}"
-                result_string = re.sub(pattern_with_spaces, block.content, result_string)
+                result_string = result_string.replace('{{block id=' + str(block_id) + '}}', block.content)
                 
                 # Recursive search in the result_string
                 result_string = find_block_ids(result_string)
