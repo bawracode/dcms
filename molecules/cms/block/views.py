@@ -4,30 +4,31 @@ import re
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Blocks
-from dcms.pages.models import CustomPage as pages
+from molecules.cms.pages.models import CustomPage
 from django.template import Template, RequestContext
 # render string to html
 from molecules.cms.cms_logs.models import *
 
 
 def find_block_ids(string):
-    pattern = r'\{\{\s*block\s+id=[\'"]?\s*(\s\d+\s)\s*[\'"]?\s*\}\}'
-
+    pattern = r"\{\{\s*block\s+id\s*=\s*['\"]?\s*(\d+)\s*['\"]?\s*\}\}"
     matches = re.findall(pattern, string)
-    
+
     if matches:
         block_ids = [int(match) for match in matches]
         result_string = string
+
         for block_id in block_ids:
             try:
                 block = Blocks.objects.get(id=block_id, status=1)
-                result_string = result_string.replace('{{block id=' + str(block_id) + '}}', block.content)
-                
+                pattern_with_spaces = r"\{\{\s*block\s+id\s*=\s*['\"]?\s*" + str(block_id) + r"\s*['\"]?\s*\}\}"
+                result_string = re.sub(pattern_with_spaces, block.content, result_string)
+
                 # Recursive search in the result_string
                 result_string = find_block_ids(result_string)
             except ObjectDoesNotExist:
                 pass
-        
+
         return result_string
     else:
         return string
@@ -51,7 +52,7 @@ def index(request,slug_url):
 
 def render_block(request,slug_url):
 
-    block = pages.objects.get(slug=slug_url)
+    block = CustomPage.objects.get(slug=slug_url)
 
     block_collection = find_block_ids(block.content)
 

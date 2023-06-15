@@ -6,7 +6,7 @@ import re
 from molecules.cms.pages.models import *
 from molecules.cms.cms_logs.models import *
 
-from dcms.block.views import render_block
+from molecules.cms.block.views import render_block
 
     
 def index(request,slug_url):

@@ -32,8 +32,8 @@ active_modules = get_active_modules()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('pages/', include('molecules.cms.pages.urls')),
-    # path('blocks/', include('molecules.cms.block.urls')),
+    path('pages/', include('molecules.cms.pages.urls')),
+    path('block/', include('molecules.cms.block.urls')),
 ]
 for module in active_modules:
     if module != 'cms':

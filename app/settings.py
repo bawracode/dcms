@@ -47,8 +47,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,8 +57,7 @@ installed_apps = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nucleus',
-    'molecules.cms.pages',
-    'molecules.cms.block',
+
    
 
 ]
