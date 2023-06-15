@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import json
+import json,os
 
 
 def get_active_modules():
     with open('mainConfig.json', 'r') as config_file:
         config_data = json.load(config_file)
 
+    
     active_modules = [module for module, status in config_data.items() if status == 'active']
 
     return active_modules
@@ -31,10 +32,11 @@ active_modules = get_active_modules()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('block/', include('dcms.block.urls')),
-    path('tinymce/', include('tinymce.urls')),
-    path('pages/', include('dcms.pages.urls')),
+    # path('pages/', include('molecules.cms.pages.urls')),
+    # path('blocks/', include('molecules.cms.block.urls')),
 ]
-
 for module in active_modules:
-    urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
+    if module != 'cms':
+        urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
+    else:
+        pass

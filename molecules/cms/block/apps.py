@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PagesConfig(AppConfig):
+class BlockConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "dcms.pages"
+    name = "molecules.cms.block"

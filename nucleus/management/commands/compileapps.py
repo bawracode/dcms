@@ -24,8 +24,13 @@ class Command(BaseCommand):
         app_names = []
         for folders in os.listdir(appFolders):
             app_path = os.path.join(appFolders, folders)
-            if os.path.isdir(app_path):
+            if not os.path.exists(os.path.join(appFolders, folders,'config.json')):                    
+                for app in os.listdir(app_path):
+                    app_names.append(folder_name+"."+os.path.basename(app_path)+"."+app) 
+            else:
+                print(os.path.basename(app_path))
                 app_names.append(folder_name+"."+os.path.basename(app_path))
+                
                 
         # Write the app names to dynamic_apps_list.txt
         with open(file_path, 'w') as file:

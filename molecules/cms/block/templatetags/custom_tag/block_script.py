@@ -1,5 +1,5 @@
 from django import template
-from dcms.block.models import Blocks
+from molecules.cms.block.models import Blocks
 from django.utils.safestring import mark_safe
 
 
