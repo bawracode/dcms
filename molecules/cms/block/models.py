@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 # Create your models here.
 class Blocks(models.Model):
@@ -22,9 +23,8 @@ class Blocks(models.Model):
                                     choices =(
                                     (1, 'system_define'), (0, 'custom_define')
                                     ))
-    created_at = models.DateTimeField(_("creation date"),auto_now_add=True)
-    updated_at = models.DateTimeField(_("updation date"),auto_now=True)
-    
+    created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
+    updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     class Meta:
         indexes = [
             models.Index(fields=['slug']),
