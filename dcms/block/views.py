@@ -4,8 +4,9 @@ import re
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Blocks
+from dcms.pages.models import CustomPage as pages
 from django.template import Template, RequestContext
-# render string to html
+
 from dcms.cms_logs.models import *
 
 
@@ -44,6 +45,21 @@ def index(request,slug_url):
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})
     rendered_template = template.render(context)
-    PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
+    # PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
 
     return HttpResponse(rendered_template)
+
+
+def render_block(request,slug_url):
+
+    block = pages.objects.get(slug=slug_url)
+
+    block_collection = find_block_ids(block.content)
+
+
+    template = Template(block_collection)
+    context = RequestContext(request, {'user': request.user})
+    rendered_template = template.render(context)
+    # PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
+    
+    return str(rendered_template)

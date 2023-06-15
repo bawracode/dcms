@@ -5,23 +5,11 @@ from .models import CustomPage
 import re
 from dcms.cms_logs.models import *
 
+from dcms.block.views import render_block
+
     
 def index(request,slug_url):
 
-    page_content = CustomPage.objects.get(slug=slug_url)
-    print(page_content,"page_content")
-    pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
-    matches = re.findall(pattern, page_content.content)
-    if matches:
-        block_ids = [int(match) for match in matches]
-        result_string = page_content.content
-        for block_id in block_ids:
-                block = Blocks.objects.get(id=block_id, status=1)
-                block_content = block.content
-                print(result_string.find('block id='))
-                print(('{{block id=' + str(block_id) + '}}'))
-                result_strings = result_string.replace('{{block id=' + str(block_id) + '}}', block_content)
-                print(result_strings,"block.content")
-                
-    PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
+    result_strings = render_block(request,slug_url)
+
     return HttpResponse(result_strings)
