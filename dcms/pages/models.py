@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from static.tinymce import models as tinymce_models
+from django.utils.html import format_html
+
 
 
 
@@ -32,3 +34,7 @@ class CustomPage(models.Model):
 
     def __str__(self):
         return self.title
+
+    def formatted_full_url(self):
+        full_url = f"http://127.0.0.1:8000/cms/{self.slug}"
+        return format_html('<a href="{}">{}</a>', full_url, full_url)

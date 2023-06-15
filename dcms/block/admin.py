@@ -15,4 +15,4 @@ class BlocksForm(forms.ModelForm):
 @admin.register(Blocks)
 class BlockAdmin(admin.ModelAdmin):
     form = BlocksForm
-    list_display = ("id",'slug', 'status',"block_status",'created_at', 'updated_at',"formatted_full_url")
+    list_display = ("id",'slug', 'status','created_at', 'updated_at',"formatted_full_url")

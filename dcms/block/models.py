@@ -15,13 +15,6 @@ class Blocks(models.Model):
                                     choices =(
                                     (1, 'Active'), (0, 'Inactive')
                                     ))
-    block_status = models.IntegerField(default = 1,
-                                   blank = True,
-                                    null = True,
-                                    help_text ='1 - system_define, 0 - custom_define', 
-                                    choices =(
-                                    (1, 'system_define'), (0, 'custom_define')
-                                    ))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
