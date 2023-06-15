@@ -2,6 +2,8 @@ from django.contrib import admin
 from dcms.pages.models import CustomPage
 from django.conf import settings
 import os
+from django import forms
+
 def create_templates():
     base_directory = settings.BASE_DIR
 
@@ -15,9 +17,6 @@ def create_templates():
         with open(os.path.join(base_directory, 'templates', 'pages', 'admin', 'custom_change_form.html'), 'w') as f:
             f.write("""
             {% extends "admin/change_form.html" %}
-
-
-
 {% block breadcrumbs %}
 
 <div class="row mb-2">
@@ -36,7 +35,17 @@ def create_templates():
 """)
 create_templates()
 # Register your models here.
+class PagesForm(forms.ModelForm):
+    content = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 30, 'cols': 100}),  # Adjust rows and cols values as per your preference
+    )
+
+    class Meta:
+        model = CustomPage
+        fields = '__all__'
+
 class CustomePageAdmin(admin.ModelAdmin):
+    form = PagesForm
     list_display = ('title', 'slug', 'status', 'created_at', 'updated_at')
     list_filter = ('status', 'created_at', 'updated_at')
     search_fields = ('title', 'content')
