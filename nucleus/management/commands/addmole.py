@@ -17,6 +17,8 @@ class Command(TemplateCommand):
 
         # make dirs for app
         target = os.path.join(base_directory, 'molecules' , app_name)
+        
+
 
         self.stdout.write(f"Creating app '{app_name}' in '{target}'...")
 
@@ -31,13 +33,13 @@ class Command(TemplateCommand):
         with open(apps_file_path, 'r') as apps_file:
             lines = apps_file.readlines()
 
-        lines[-1] = lines[-1].replace(f'name = "{app_name}"', f'name = "molecules.{app_name}"')
+        lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "molecules.{app_name}"')
         
         with open(apps_file_path, 'w') as apps_file:
             apps_file.writelines(lines)
 
         # create config json file for apps
-        os.system(f"touch {target}/{app_name}.json")
+        os.system(f"touch {target}/config.json")
 
         app_config_data = {
             'app_name': app_name,
@@ -51,7 +53,7 @@ class Command(TemplateCommand):
         # create config urls file for apps
         os.system(f"touch {target}/urls.py")
 
-        config_file_path = os.path.join(target, f'{app_name}.json')
+        config_file_path = os.path.join(target, f'config.json')
         urls_file_path = os.path.join(target, 'urls.py')
         apps_file_path = os.path.join(target, 'apps.py')
 
@@ -61,7 +63,7 @@ class Command(TemplateCommand):
 
         # update the urls file
         with open(urls_file_path, 'w') as urls_file:
-            urls_file.write(f'''from django.urls import path,include\nfrom molecules.{app_name} import views\n\napp_name={app_name}
+            urls_file.write(f'''from django.urls import path,include\nfrom molecules.{app_name} import views\n\n
 \nurlpatterns = [\n \n]\n''')
         
         # check if all directory present if not then it build

@@ -1,0 +1,3 @@
+molecules.cms.cms_logs
+molecules.cms.pages
+molecules.cms.block

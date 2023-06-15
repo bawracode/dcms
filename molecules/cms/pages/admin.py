@@ -1,5 +1,5 @@
 from django.contrib import admin
-from dcms.pages.models import CustomPage
+from molecules.cms.pages.models import CustomPage
 from django.conf import settings
 import os
 from django import forms
