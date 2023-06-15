@@ -15,6 +15,8 @@ import os
 import environ
 from pathlib import Path
 from nucleus.management.compilation import Compilation
+from django.utils.translation import gettext_lazy as _
+
 sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
 
 
@@ -73,6 +75,7 @@ INSTALLED_APPS = installed_apps + [app for app in dynamic_apps if app not in ins
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -143,11 +146,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -161,3 +166,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#for language
+
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('es', _('Spanish')),
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]

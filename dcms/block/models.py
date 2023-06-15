@@ -1,12 +1,12 @@
 from django.db import models
-from static.tinymce import models as tinymce_models
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Blocks(models.Model):
     id = models.IntegerField(primary_key=True)
-    title = models.CharField(("title"), max_length=255)
-    slug = models.SlugField(("slug"), max_length=255, db_index=True, unique=False)
+    title = models.CharField(_("title"), max_length=255)
+    slug = models.SlugField(_("slug"), max_length=255, db_index=True, unique=False)
     content = models.TextField()
     status = models.IntegerField(default = 1,
                                    blank = True,
@@ -22,8 +22,8 @@ class Blocks(models.Model):
                                     choices =(
                                     (1, 'system_define'), (0, 'custom_define')
                                     ))
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(_("creation date"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updation date"),auto_now=True)
     
     class Meta:
         indexes = [

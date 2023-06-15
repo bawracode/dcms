@@ -2,12 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import re
 from django.core.exceptions import ObjectDoesNotExist
+
 from .models import Blocks
+from django.template import Template, RequestContext
 # render string to html
 
 
 def find_block_ids(string):
-    pattern = r'\{\{block id=[\'"]?(\d+)[\'"]?\}\}'
+    pattern = r'\{\{\s*block\s+id=[\'"]?\s*(\s\d+\s)\s*[\'"]?\s*\}\}'
+
     matches = re.findall(pattern, string)
     
     if matches:
@@ -35,4 +38,8 @@ def index(request,slug_url):
 
     block_collection = find_block_ids(block.content)
 
-    return HttpResponse(block_collection)
+
+    template = Template(block_collection)
+    context = RequestContext(request, {'user': request.user})
+    rendered_template = template.render(context)
+    return HttpResponse(rendered_template)
