@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from dcms.block.models import Blocks
 from .models import CustomPage
 import re
+from dcms.cms_logs.models import *
 
     
 def index(request,slug_url):
@@ -21,5 +22,6 @@ def index(request,slug_url):
                 print(('{{block id=' + str(block_id) + '}}'))
                 result_strings = result_string.replace('{{block id=' + str(block_id) + '}}', block_content)
                 print(result_strings,"block.content")
-    
+                
+    PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
     return HttpResponse(result_strings)
