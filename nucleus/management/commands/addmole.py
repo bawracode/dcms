@@ -17,16 +17,22 @@ class Command(TemplateCommand):
 
         # make dirs for app
         target = os.path.join(base_directory, 'molecules' , app_name)
+        # if app_name satarts with cms_ then it will create app in cms folder
+        if app_name.startswith('cms_'):
+            target = os.path.join(base_directory,'molecules', 'cms' , app_name)
+
+        # if app already present then it will not create
+        if os.path.exists(target):
+            self.stdout.write(self.style.ERROR(f"App '{app_name}' already exists in '{target}'."))
+            return
         
-
-
+        
         self.stdout.write(f"Creating app '{app_name}' in '{target}'...")
 
         os.makedirs(target, exist_ok=True)
 
         super().handle('app', app_name=app_name, target=target, **options)
 
-        
         
         # update the apps file
         apps_file_path = os.path.join(target, 'apps.py')
@@ -103,18 +109,6 @@ class Command(TemplateCommand):
             print(f"Deleted directory: {dir_name}")
 
         # update main config file  
-        modul_list = []
-        for foldername in os.listdir(os.path.join(base_directory,'molecules')):
-            modul_list.append(foldername)
-            modul_list.append('active')
-
-        dictionary = {}
-        for i in range(0, len(modul_list), 2):
-            key = modul_list[i]                                                                                                                                                                                                                             
-            value = modul_list[i + 1]
-            dictionary[key] = value
         
-        with open(os.path.join(base_directory,'mainConfig.json'), 'w') as config_file:
-             json.dump(dictionary, config_file, indent=4)
 
         self.stdout.write(self.style.SUCCESS(f"App '{app_name}' created successfully in '{target}'."))

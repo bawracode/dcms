@@ -36,7 +36,8 @@ urlpatterns = [
     path('block/', include('molecules.cms.block.urls')),
 ]
 for module in active_modules:
-    if module != 'cms':
-        urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
-    else:
-        pass
+    if os.path.exists(os.path.join('molecules', module, 'urls.py')):
+        if module != 'cms':
+            urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
+        else:
+            pass
