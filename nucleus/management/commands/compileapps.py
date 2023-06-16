@@ -39,13 +39,13 @@ class Command(BaseCommand):
         base_directory = settings.BASE_DIR
         modul_list = []
         for foldername in os.listdir(os.path.join(base_directory,'molecules')):
-            modul_list.append(foldername)
-            modul_list.append('active')
             if foldername == 'cms':
                 for cms_foldername in os.listdir(os.path.join(base_directory,'molecules','cms')):
                     modul_list.append('cms'+"."+cms_foldername)
                     modul_list.append('active')
-
+            else:
+                modul_list.append(foldername)
+                modul_list.append('active')
         dictionary = {}
         for i in range(0, len(modul_list), 2):
             key = modul_list[i]                                                                                                                                                                                                                             

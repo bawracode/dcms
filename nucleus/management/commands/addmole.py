@@ -38,8 +38,10 @@ class Command(TemplateCommand):
         apps_file_path = os.path.join(target, 'apps.py')
         with open(apps_file_path, 'r') as apps_file:
             lines = apps_file.readlines()
-
-        lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "molecules.{app_name}"')
+        if target.endswith('cms'):
+            lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "cms.{app_name}"')
+        else:
+            lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "molecules.{app_name}"')
         
         with open(apps_file_path, 'w') as apps_file:
             apps_file.writelines(lines)
@@ -62,6 +64,7 @@ class Command(TemplateCommand):
         config_file_path = os.path.join(target, f'config.json')
         urls_file_path = os.path.join(target, 'urls.py')
         apps_file_path = os.path.join(target, 'apps.py')
+        views_file_path = os.path.join(target, 'views.py')
 
         # dumps the json config data
         with open(config_file_path, 'w') as config_file:
@@ -69,10 +72,17 @@ class Command(TemplateCommand):
 
         # update the urls file
         with open(urls_file_path, 'w') as urls_file:
-            urls_file.write(f'''from django.urls import path,include\nfrom molecules.{app_name} import views\n\n
-\nurlpatterns = [\n \n]\n''')
+            urls_file.write(f'''from django.urls import path,include\nfrom . import views\n\n
+\nurlpatterns = [\n path('', views.index, name='index'), \n]\n''')
         
-        # check if all directory present if not then it build
+        with open(views_file_path, 'w') as views_file:
+            views_file.write(f'''
+from django.shortcuts import render,HttpResponse
+
+# Create your views here.
+def index(request):
+    return HttpResponse("{app_name}")''')
+
         os.chdir(base_directory)
         if os.path.exists('static'):
             os.chdir('static')

@@ -56,6 +56,7 @@ installed_apps = [
     'tinymce',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'molecules',
     'nucleus',
 
    
