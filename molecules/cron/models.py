@@ -1,4 +1,5 @@
 from django.db import models
+import pytz
 
 # Create your models here.
 
@@ -15,9 +16,18 @@ class CronSchedule(models.Model):
     cron_job = models.ForeignKey(CronJob, on_delete=models.CASCADE)
     scheduled_time = models.DateTimeField()
     execute_start_datetime = models.DateTimeField()
-    execute_end_datetime = models.DateTimeField()
-    status = models.CharField(max_length=255)
-    timezone = models.CharField(max_length=255)
+    execute_end_datetime = models.DateTimeField(blank=True, null=True)
+    status = models.IntegerField(default = 1,
+                                   blank = True,
+                                    null = True,
+                                    help_text ='1->Pending, 2->Running, 3->Completed, 4->Failed', 
+                                    choices =(
+                                    (1, 'Pending'), (2, 'Running'),(3, "Completed"),(4,"Failed")
+                                    ))
+    
+    TIMEZONE_CHOICES = [(tz, tz) for tz in pytz.all_timezones]
+    timezone = models.CharField(max_length=100, choices=TIMEZONE_CHOICES,default='UTC')
+
     max_retries = models.IntegerField()
     retry_count = models.IntegerField()
     retry_delay = models.IntegerField()
