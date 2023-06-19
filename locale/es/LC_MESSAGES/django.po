@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-15 11:52+0530\n"
+"POT-Creation-Date: 2023-06-16 10:01+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\app\settings.py:174
+#: .\app\settings.py:176
 msgid "English"
 msgstr "Inglesa"
 
-#: .\app\settings.py:175
+#: .\app\settings.py:177
 msgid "French"
 msgstr "Francesa"
 
-#: .\app\settings.py:176
+#: .\app\settings.py:178
 msgid "Spanish"
 msgstr "Española"
 
-#: .\dcms\block\models.py:8 .\dcms\pages\models.py:20
+#: .\molecules\cms\block\models.py:9 .\molecules\cms\pages\models.py:22
 msgid "title"
 msgstr "título"
 
-#: .\dcms\block\models.py:9 .\dcms\pages\models.py:21
+#: .\molecules\cms\block\models.py:10 .\molecules\cms\pages\models.py:23
 msgid "slug"
 msgstr "babosa"
 
-#: .\dcms\block\models.py:25 .\dcms\pages\models.py:30
+#: .\molecules\cms\block\models.py:26 .\molecules\cms\cms_logs\models.py:13
+#: .\molecules\cms\cms_logs\models.py:22 .\molecules\cms\pages\models.py:32
 msgid "creation date"
 msgstr "fecha de creación"
 
-#: .\dcms\block\models.py:26 .\dcms\pages\models.py:31
+#: .\molecules\cms\block\models.py:27 .\molecules\cms\cms_logs\models.py:14
+#: .\molecules\cms\cms_logs\models.py:23 .\molecules\cms\pages\models.py:33
 msgid "updation date"
 msgstr "fecha de actualización"

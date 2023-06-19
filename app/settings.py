@@ -47,8 +47,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,9 +148,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

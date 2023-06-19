@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import json,os
+from django.utils.translation import gettext_lazy as _
 
 
 def get_active_modules():
@@ -31,7 +32,7 @@ def get_active_modules():
 active_modules = get_active_modules()
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(_('admin/'), admin.site.urls),
     path('pages/', include('molecules.cms.pages.urls')),
     path('block/', include('molecules.cms.block.urls')),
 ]

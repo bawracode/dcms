@@ -46,3 +46,4 @@ class Command(BaseCommand):
                         json_file.seek(0)
                         json.dump(data, json_file, indent=4)
                         json_file.truncate()
+                 
