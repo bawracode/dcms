@@ -1,23 +1,7 @@
-"""
-URL configuration for app project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 import json,os
-from django.utils.translation import gettext_lazy as _
+from pathlib import Path
 
 
 def get_active_modules():
@@ -30,14 +14,16 @@ def get_active_modules():
     return active_modules
 
 active_modules = get_active_modules()
+base_directory = Path(__file__).resolve().parent.parent
 
 urlpatterns = [
     path(_('admin/'), admin.site.urls),
-    path('pages/', include('molecules.cms.pages.urls')),
-    path('block/', include('molecules.cms.block.urls')),
 ]
+
 for module in active_modules:
-    if module != 'cms':
-        urlpatterns.append(path(module + '/', include('molecules.' + module + '.urls')))
-    else:
-        pass
+    if os.path.exists(os.path.join(base_directory,'molecules', module, 'urls.py')):
+        urlpatterns+=[path(module + '/', include('molecules.' + module + '.urls'))]    
+
+for app in os.listdir(os.path.join(base_directory,'molecules','cms')):
+    urlpatterns+=[path(app + '/', include('molecules.' + 'cms' + '.' + app + '.urls'))]
+
