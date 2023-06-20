@@ -13,4 +13,6 @@ class CronScheduleAdmin(admin.ModelAdmin):
     list_display = ("cron_job","scheduled_time","execute_start_datetime","execute_end_datetime","status","timezone","max_retries","retry_count","retry_delay","concurrency")
 
 
-admin.site.register(CronLog)
+@admin.register(CronLog)
+class CronLogAdmin(admin.ModelAdmin):
+    list_display = ("cron_job","execution_time","status","output","error_message","created_date")

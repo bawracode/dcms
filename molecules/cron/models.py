@@ -37,6 +37,6 @@ class CronLog(models.Model):
     cron_job = models.ForeignKey(CronJob, on_delete=models.CASCADE)
     execution_time = models.DateTimeField()
     status = models.BooleanField(default=False)
-    output = models.TextField()
+    output = models.TextField(blank=True,null=True)
     error_message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
