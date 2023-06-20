@@ -33,7 +33,7 @@ def return_class_name(script_path):
 def schedule(schedule_time_in_minutes,next_time_in_minutes):      
 
     while True:
-        available_cron = CronSchedule.objects.filter(status=1,schedule_time__gt=timezone.localtime(timezone.now())).values_list("cron_job__name","cron_job__time_expression")
+        available_cron = CronSchedule.objects.filter(status=1,scheduled_time__gt=timezone.localtime(timezone.now())).values_list("cron_job__name","cron_job__time_expression")
         cron_name_available = set([f"{i[0]}_{convert_cron_to_datetime(i[1])}" for i in available_cron])
 
         cronjob = CronJob.objects.filter(status=True).values_list("name","time_expression","script_path")
