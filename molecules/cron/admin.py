@@ -1,7 +1,5 @@
 from django.contrib import admin
 from .models import *
-# Register your models here.
-
 
 @admin.register(CronJob)
 class CronJobAdmin(admin.ModelAdmin):
@@ -16,3 +14,5 @@ class CronScheduleAdmin(admin.ModelAdmin):
 @admin.register(CronLog)
 class CronLogAdmin(admin.ModelAdmin):
     list_display = ("cron_job","execution_time","status","output","error_message","created_date")
+
+

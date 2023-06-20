@@ -12,6 +12,8 @@ path = "*"
 django-cms = "*"
 django-tinymce = "*"
 pytz = "*"
+croniter = "*"
+django-bootstrap5 = "*"
 
 [dev-packages]
 
