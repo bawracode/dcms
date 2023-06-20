@@ -11,6 +11,7 @@ environ = "*"
 path = "*"
 django-cms = "*"
 django-tinymce = "*"
+pytz = "*"
 
 [dev-packages]
 

@@ -1,6 +1,7 @@
 molecules.test1
 molecules.cms.cms_logs
-molecules.cron
 molecules.cms.pages
 molecules.cms.block
+molecules.test3
 molecules.test2
+molecules.cron

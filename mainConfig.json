@@ -1,8 +1,9 @@
 {
     "test1": "active",
     "cms.cms_logs": "active",
-    "cms.cms_cron": "active",
     "cms.pages": "active",
     "cms.block": "active",
-    "test2": "active"
+    "test3": "active",
+    "test2": "active",
+    "cron": "active"
 }

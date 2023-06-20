@@ -60,7 +60,9 @@ class Command(TemplateCommand):
 
         # create config urls file for apps
         os.system(f"touch {target}/urls.py")
-
+        os.mkdir(os.path.join(target, 'cronjob'))
+        os.chdir(os.path.join(target, 'cronjob'))
+        os.system(f"touch __init__.py")
         config_file_path = os.path.join(target, f'config.json')
         urls_file_path = os.path.join(target, 'urls.py')
         apps_file_path = os.path.join(target, 'apps.py')

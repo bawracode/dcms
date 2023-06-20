@@ -1,16 +1,14 @@
+import time
+
 import sys, os, django
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
 django.setup()
 
-import time
-import croniter
-import threading
-import importlib
 from django.utils import timezone
-from datetime import datetime
-from molecules.cron.models import CronJob, CronSchedule, CronLog
 
+import croniter
+from datetime import datetime
 
 #function to convert cron expression to datetime
 def convert_cron_to_datetime(cron_expression):
@@ -19,19 +17,13 @@ def convert_cron_to_datetime(cron_expression):
     return next_datetime
 
 
-def return_class_name(script_path):
-    class_name = script_path.split(".")[-1]
-    return class_name
+from molecules.cron.models import CronJob, CronSchedule
+
+def schedule():
+    cronjob = CronJob.objects.filter(status=True).values_list("name","time_expression","script_path")
 
 
-#function to schedule cron jobs
-def schedule(wait_time_in_minutes):
-    while True:
-        pass
-        cronjob = CronJob.objects.filter(status=True).values_list("name","time_expression","script_path")
-
-
-        current_time = timezone.make_naive(timezone.localtime(timezone.now())) + timezone.timedelta(minutes=15)
+    current_time = timezone.make_naive(timezone.localtime(timezone.now())) + timezone.timedelta(minutes=5)
 
 
         print("\nUTC TIME:",current_time)
@@ -54,7 +46,6 @@ def schedule(wait_time_in_minutes):
 
 
 
-#function to run cron jobs
 def run():
     pending_cron =  CronSchedule.objects.filter(status=1).values_list("id","cron_job__name","cron_job__script_path","cron_job__time_expression","scheduled_time","execute_start_datetime","max_retries","retry_count","retry_delay","concurrency","timezone")
 
