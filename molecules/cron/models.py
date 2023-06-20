@@ -15,7 +15,7 @@ class CronJob(models.Model):
 class CronSchedule(models.Model):
     cron_job = models.ForeignKey(CronJob, on_delete=models.CASCADE)
     scheduled_time = models.DateTimeField()
-    execute_start_datetime = models.DateTimeField()
+    execute_start_datetime = models.DateTimeField(blank=True, null=True)
     execute_end_datetime = models.DateTimeField(blank=True, null=True)
     status = models.IntegerField(default = 1,
                                    blank = True,
