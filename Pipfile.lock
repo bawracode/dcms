@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f84b471c31bbcf9d668ea019d84537d64051ec007144c94a15b433ecec09af86"
+            "sha256": "507458a0fd585a083f800001583e33df6b33b14d1d03d917a4ba4d550027c94e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -95,6 +95,13 @@
             ],
             "index": "pypi",
             "version": "==3.6.1"
+        },
+        "django-toggle-switch-widget": {
+            "hashes": [
+                "sha256:587ee909c02f8ad3041bc4349cda456b00bb6450f3d83a946db3ffc2ba9cd326"
+            ],
+            "index": "pypi",
+            "version": "==0.1.1"
         },
         "django-treebeard": {
             "hashes": [
