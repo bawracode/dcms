@@ -37,10 +37,8 @@ def schedule(schedule_time_in_minutes,next_time_in_minutes):
         cron_name_available = set([f"{i[0]}_{convert_cron_to_datetime(i[1])}" for i in available_cron])
 
         cronjob = CronJob.objects.filter(status=True).values_list("name","time_expression","script_path")
-        print(cronjob)
 
         current_time = timezone.localtime(timezone.now()) + timezone.timedelta(minutes=next_time_in_minutes)
-
 
         print("\nUTC TIME:",current_time)
 

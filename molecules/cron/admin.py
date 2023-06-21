@@ -1,8 +1,20 @@
 from django.contrib import admin
 from .models import *
+from django.forms import ModelForm
+from django_toggle_switch_widget.widgets import DjangoToggleSwitchWidget
+
+class CronJobForm(ModelForm):
+    
+    class Meta:
+        model = CronJob
+        fields = "__all__"
+        widgets = {
+            "status": DjangoToggleSwitchWidget(round=True,),
+        }
 
 @admin.register(CronJob)
 class CronJobAdmin(admin.ModelAdmin):
+    form = CronJobForm
     list_display = ("name","time_expression","status","script_path")
 
 

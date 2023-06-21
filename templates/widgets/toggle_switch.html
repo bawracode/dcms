@@ -1,0 +1,9 @@
+{% load i18n %}
+
+<div class="django-toggle-switch {% if value %}django-toggle-switch-active{% endif %} {% if klass %}{{ klass }}{% endif %}">
+    <input type="checkbox" class="django-toggle-switch-checkbox" id="{{ widget.attrs.id }}" name="{{ widget.name }}" value="true" {% if value %}checked{% endif %}>
+    <label class="django-toggle-switch-label" for="{{ widget.attrs.id }}">
+        <div class="django-toggle-switch-inner"></div>
+        <div class="django-toggle-switch-switch"></div>
+    </label>
+</div>
