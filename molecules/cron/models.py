@@ -12,6 +12,9 @@ class CronJob(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.name}"
+
 class CronSchedule(models.Model):
     cron_job = models.ForeignKey(CronJob, on_delete=models.CASCADE)
     scheduled_time = models.DateTimeField()
@@ -33,6 +36,9 @@ class CronSchedule(models.Model):
     retry_delay = models.IntegerField()
     concurrency = models.IntegerField()
 
+    def __str__(self):
+        return f"{self.cron_job.name} - {self.scheduled_time}"
+
 class CronLog(models.Model):
     cron_job = models.ForeignKey(CronJob, on_delete=models.CASCADE)
     execution_time = models.DateTimeField()
@@ -40,3 +46,6 @@ class CronLog(models.Model):
     output = models.TextField(blank=True,null=True)
     error_message = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.cron_job.name} - {self.execution_time}"
