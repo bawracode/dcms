@@ -33,6 +33,7 @@ def return_class_name(script_path):
 def schedule(schedule_time_in_minutes,next_time_in_minutes):      
 
     while True:
+
         available_cron = CronSchedule.objects.filter(status=1,scheduled_time__gt=timezone.localtime(timezone.now())).values_list("cron_job__name","cron_job__time_expression")
         cron_name_available = set([f"{i[0]}_{convert_cron_to_datetime(i[1])}" for i in available_cron])
 
@@ -47,7 +48,7 @@ def schedule(schedule_time_in_minutes,next_time_in_minutes):
             next_datetime = convert_cron_to_datetime(cron[1])
 
             if(current_time >= next_datetime and f"{cron[0]}_{next_datetime}" not in cron_name_available):
-                print("current_time :",current_time)
+            
                 print("next_datetime :",next_datetime)
 
                 tempCron = CronJob.objects.get(name=cron[0])
@@ -66,6 +67,8 @@ def run():
             
         pending_cron =  CronSchedule.objects.filter(status=1).values_list("id","cron_job__name","cron_job__script_path","cron_job__time_expression","scheduled_time","execute_start_datetime","max_retries","retry_count","retry_delay","concurrency","timezone")
 
+
+
         for cron in pending_cron:
 
             cron_path = cron[2]
@@ -75,9 +78,6 @@ def run():
             tempCronSchedule = CronSchedule.objects.get(id=cron[0])
 
             current_time = timezone.localtime(timezone.now())
-
-            print("\nCurrent Time:",current_time)
-            print("Scheduled Time:",tempCronSchedule.scheduled_time)
 
             try:
                 module = importlib.import_module(cron_path)
@@ -94,7 +94,7 @@ def run():
                 scheduled_hour = tempCronSchedule.scheduled_time.hour
                 scheduled_minute = tempCronSchedule.scheduled_time.minute
 
-                if(current_date == scheduled_date and current_hour == scheduled_hour and current_minute == scheduled_minute):
+                if(current_date == scheduled_date and current_hour == scheduled_hour and (current_minute == scheduled_minute or (current_minute-15) <= scheduled_minute)):
                     cron_log = CronLog.objects.create(cron_job=tempCron,execution_time=tempCronSchedule.scheduled_time,status=True,output="",error_message="")
                     
                     tempCronSchedule.execute_start_datetime = timezone.localtime(timezone.now())
