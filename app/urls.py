@@ -21,10 +21,11 @@ urlpatterns = [
     path(_('admin/'), admin.site.urls),
 ]
 
+
 for module in active_modules:
-    if os.path.exists(os.path.join(base_directory,'molecules', module, 'urls.py')):
-        urlpatterns+=[path(module + '/', include('molecules.' + module + '.urls'))]    
-
-for app in os.listdir(os.path.join(base_directory,'molecules','cms')):
-    urlpatterns+=[path(app + '/', include('molecules.' + 'cms' + '.' + app + '.urls'))]
-
+    if os.path.exists(os.path.join(base_directory,'molecules', module, 'config.json')):
+        urlpatterns+=[path(module + '/', include('molecules.' + module + '.urls'))]
+    else:
+        module_path  = '/'.join(module.split('.'))
+        if os.path.exists(os.path.join(base_directory,'molecules', module_path, 'config.json')):
+            urlpatterns+=[path(module_path + '/', include('molecules.' + '.'.join(module.split('/')) + '.urls'))]

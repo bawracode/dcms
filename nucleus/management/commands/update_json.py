@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 if file_extension in ['js']:
                     module_name = os.path.basename(root)
                     file_path = os.path.join(root, file)
-                    json_file_path = os.path.join(molecules_folder,module_name, f'{module_name}.json')
+                    json_file_path = os.path.join(molecules_folder,module_name, 'config.json')
                     print(json_file_path)
                     with open(json_file_path, 'r+') as json_file:
                         data = json.load(json_file)
