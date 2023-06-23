@@ -1,4 +1,5 @@
 molecules.test1
+molecules.app_config
 molecules.cms.cms_logs
 molecules.cms.pages
 molecules.cms.block

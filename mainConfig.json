@@ -1,5 +1,6 @@
 {
     "test1": "active",
+    "app_config": "active",
     "cms.cms_logs": "active",
     "cms.pages": "active",
     "cms.block": "active",
