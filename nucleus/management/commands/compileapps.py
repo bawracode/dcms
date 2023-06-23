@@ -30,12 +30,12 @@ class Command(BaseCommand):
             else:
                 print(os.path.basename(app_path))
                 app_names.append(folder_name+"."+os.path.basename(app_path))
-                
+         
                 
         # Write the app names to dynamic_apps_list.txt
-        # with open(file_path, 'w') as file:
-        #     file.write('')
-        #     file.write('\n'.join(app_names))
+        with open(file_path, 'w') as file:
+            file.write('')
+            file.write('\n'.join(app_names))
         base_directory = settings.BASE_DIR
         modul_list = []
         for foldername in os.listdir(os.path.join(base_directory,'molecules')):
