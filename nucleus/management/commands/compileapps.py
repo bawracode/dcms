@@ -28,7 +28,6 @@ class Command(BaseCommand):
                 for app in os.listdir(app_path):
                     app_names.append(folder_name+"."+os.path.basename(app_path)+"."+app) 
             else:
-                print(os.path.basename(app_path))
                 app_names.append(folder_name+"."+os.path.basename(app_path))
          
                 
@@ -37,15 +36,25 @@ class Command(BaseCommand):
             file.write('')
             file.write('\n'.join(app_names))
         base_directory = settings.BASE_DIR
+
+        molecules_directory = os.path.join(base_directory, 'molecules')
+
         modul_list = []
-        for foldername in os.listdir(os.path.join(base_directory,'molecules')):
-            if foldername == 'cms':
-                for cms_foldername in os.listdir(os.path.join(base_directory,'molecules','cms')):
-                    modul_list.append('cms'+"."+cms_foldername)
+# append_modules function is used to append the modules to the list
+        def append_modules(directory, modul_list):
+            for foldername in os.listdir(directory):
+                folder_path = os.path.join(directory, foldername)
+                config_path = os.path.join(folder_path, 'config.json')
+
+                if os.path.isfile(config_path):
+                    modul_list.append(foldername)
                     modul_list.append('active')
-            else:
-                modul_list.append(foldername)
-                modul_list.append('active')
+                elif os.path.isdir(folder_path):
+                    for app in os.listdir(folder_path):
+                        modul_list.append(foldername + '.' + app)
+                        modul_list.append('active')
+        append_modules(molecules_directory, modul_list)
+# from list to mainConfig.json
         dictionary = {}
         for i in range(0, len(modul_list), 2):
             key = modul_list[i]                                                                                                                                                                                                                             
@@ -55,4 +64,4 @@ class Command(BaseCommand):
         with open(os.path.join(base_directory,'mainConfig.json'), 'w') as config_file:
              json.dump(dictionary, config_file, indent=4)
 
-        self.stdout.write(f'Successfully added apps to compiled file')
+        self.stdout.write(self.style.SUCCESS(f'Successfully added apps to compiled file and mainConfig.json'))
