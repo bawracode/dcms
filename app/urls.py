@@ -26,6 +26,6 @@ for module in active_modules:
     if os.path.exists(os.path.join(base_directory,'molecules', module, 'config.json')):
         urlpatterns+=[path(module + '/', include('molecules.' + module + '.urls'))]
     else:
-        imodule_path  = '/'.join(module.split('.'))
-        if os.path.exists(os.path.join(base_directory,'molecules', imodule_path, 'config.json')):
-            urlpatterns+=[path(imodule_path + '/', include('molecules.' + '.'.join(module.split('/')) + '.urls'))]
+        module_path  = '/'.join(module.split('.'))
+        if os.path.exists(os.path.join(base_directory,'molecules', module_path, 'config.json')):
+            urlpatterns+=[path(module_path + '/', include('molecules.' + '.'.join(module.split('/')) + '.urls'))]
