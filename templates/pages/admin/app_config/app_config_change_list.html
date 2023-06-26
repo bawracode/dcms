@@ -1,0 +1,36 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrastyle  %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/app_config/style.css' %}">
+{% endblock %}
+
+{% block extrahead  %}
+{{ block.super }}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="{% static 'js/admin/nucleus/app_config/script.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        <nav class="sticky" id="nav-sidebar2" aria-label="" style="">
+            <div class="config_link">
+                {% for x in result %}
+                    <p class="config_text" onclick="render_section('{{x}}')">{{x}}</p>
+                {% endfor %}
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-9">
+        
+        <div  class="config_link2">
+              
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
