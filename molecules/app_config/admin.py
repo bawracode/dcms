@@ -24,7 +24,6 @@ class app_configAdmin(admin.ModelAdmin):
         result = []
 
         for i in json_data:
-            print(i.get('section'))
             result.append(i.get('section'))
 
         print(result)
