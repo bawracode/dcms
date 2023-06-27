@@ -34,9 +34,9 @@ async function render_sub_section(data) {
     div.id = 'menu';
     div.classList.add('sub_section');
 
-    const a = document.createElement('a');
-    a.classList.add('subsection_menu');
-    a.textContent = sectionData[i].section;
+    const a_tag = document.createElement('a');
+    a_tag.classList.add('subsection_menu');
+    a_tag.textContent = sectionData[i].section;
 
     const innerDiv = document.createElement('div');
     innerDiv.style.display = 'none';
@@ -102,7 +102,7 @@ async function render_sub_section(data) {
         }
       }
 
-      console.log(formData);
+   
 
       save_change_value(formData);
     });
