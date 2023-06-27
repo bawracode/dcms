@@ -2,7 +2,6 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render,HttpResponse
 import importlib
-
 import json
 
 def update_value():
