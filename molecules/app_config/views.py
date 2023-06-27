@@ -5,6 +5,11 @@ import importlib
 
 import json
 
+def update_value():
+        with open('molecules/app_config/app_config.json') as json_file:
+            json_data = json.load(json_file)
+
+# update default value
 def update_default_value(data, key, new_value):
     if isinstance(data, dict):
         if "default" in data and data.get("key") == key:
@@ -16,11 +21,12 @@ def update_default_value(data, key, new_value):
             update_default_value(item, key, new_value)
 
 #load json file
-with open('C:/Users/jigne/Desktop/django_cms/molecules/app_config/app_config.json') as json_file:
+with open('molecules/app_config/app_config.json') as json_file:
     json_data = json.load(json_file)
 
 # from molecules.test1.source.status import status
 
+# find source
 def find_source(json_data, search_key):
     for section in json_data:
         for sub_section in section["sub"]:
@@ -33,10 +39,12 @@ def find_source(json_data, search_key):
 
 # Create your views here.
 def index(request):
-
     return HttpResponse("app_config")
 
+# return section
 def return_sub_section(request):
+    
+    
     if request.method == 'POST':
         data = json.loads(request.body)
         section_name = data['section_name']
@@ -61,7 +69,9 @@ def return_sub_section(request):
     return JsonResponse(response_data, status=400)
 
 
+# return field
 def return_option(request):
+
     if request.method == "POST":
         data = json.loads(request.body)
         key = data['key']
@@ -81,19 +91,24 @@ def return_option(request):
             'options': instance.return_options(),
             'status': 'success'
         }
-
         return JsonResponse(response_data)
 
+# save value
 def save_value(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        key = data['key']
-        value = data['value']
+        form_field = data['form_field']
+        print(form_field)
+        for i in form_field:
+            key = i
+            value = form_field[i]
 
-        update_default_value(json_data, key, value)
+            update_default_value(json_data, key, value)
 
-        with open('C:/Users/jigne/Desktop/django_cms/molecules/app_config/app_config.json', 'w') as outfile:
+        with open('molecules/app_config/app_config.json', 'w') as outfile:
             json.dump(json_data, outfile, indent=4)
+
+        update_value()
 
         response_data = {
             'status': 'success'
