@@ -21,7 +21,7 @@
                         "key": "settings_cron_configuration_other_field",
                         "info": "Some infofor this field",
                         "type": "text",
-                        "default": "Hello world! jignesh , cybercom",
+                        "default": "Hello world! jignesh , cybercom,",
                         "order_number": "9999"
                     },
                     {
@@ -38,7 +38,16 @@
                         "key": "settings_cron_configuration_toggle_switch",
                         "info": "status of session",
                         "type": "switch",
-                        "default": "true",
+                        "default": true,
+                        "order_number": "9999"
+                    },
+                    {
+                        "label": "multiple_select_status",
+                        "key": "settings_cron_configuration_multiple_select_status",
+                        "info": "multiple status of session",
+                        "type": "multiple_select",
+                        "default": true,
+                        "source": "molecules_test1_multiple_status",
                         "order_number": "9999"
                     }
                 ]
@@ -67,7 +76,7 @@
                         "key": "settings_cron_configuration_other_field",
                         "info": "Some infofor this field",
                         "type": "text",
-                        "default": "Hello world! jignesh , cybercom",
+                        "default": "Hello world! jignesh , cybercom,",
                         "order_number": "9999"
                     }
                 ]
