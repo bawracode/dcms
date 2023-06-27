@@ -15,13 +15,13 @@ class app_configAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
 
         # Load JSON data from file
-        with open('molecules/app_config/app_config.json') as json_file:
+        with open('C:/Users/jigne/Desktop/django_cms/molecules/app_config/app_config.json') as json_file:
             json_data = json.load(json_file)
 
         result = []
 
-
         for i in json_data:
+            print(i.get('section'))
             result.append(i.get('section'))
 
         print(result)

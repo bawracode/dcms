@@ -3,7 +3,8 @@
     "app_config": "active",
     "cms.cms_logs": "active",
     "cms.pages": "active",
-    "cron": "active",
+    "cms.block": "active",
+    "test3": "active",
     "test2": "active",
-    "test3": "active"
+    "cron": "active"
 }
