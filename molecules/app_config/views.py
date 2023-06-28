@@ -2,11 +2,14 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render,HttpResponse
 import importlib
-
 import json
+import os 
+from django.conf import settings
+
+base_dir = settings.BASE_DIR
 
 def update_value():
-        with open('molecules/app_config/app_config.json') as json_file:
+        with open(os.path.join(base_dir,'nucleus','compiled','compiled_config.json')) as json_file:
             json_data = json.load(json_file)
 
 # update default value
@@ -21,7 +24,7 @@ def update_default_value(data, key, new_value):
             update_default_value(item, key, new_value)
 
 #load json file
-with open('molecules/app_config/app_config.json') as json_file:
+with open(os.path.join(base_dir,'nucleus','compiled','compiled_config.json')) as json_file:
     json_data = json.load(json_file)
 
 # from molecules.test1.source.status import status
@@ -48,12 +51,13 @@ def return_sub_section(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         section_name = data['section_name']
+        print(section_name)
 
         for i in json_data:
             if i.get('section') == section_name:
                 sub_section = i.get('sub')
                 break
-
+        print(sub_section)
         response_data = {
             'sub_section': sub_section,
             'status': 'success'
@@ -105,7 +109,7 @@ def save_value(request):
 
             update_default_value(json_data, key, value)
 
-        with open('molecules/app_config/app_config.json', 'w') as outfile:
+        with open(os.path.join(base_dir,'nucleus','compiled','compiled_config.json'), 'w') as outfile:
             json.dump(json_data, outfile, indent=4)
 
         update_value()

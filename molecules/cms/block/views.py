@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import re
 from django.core.exceptions import ObjectDoesNotExist
-
 from .models import Blocks
 from molecules.cms.pages.models import CustomPage
 from django.template import Template, RequestContext

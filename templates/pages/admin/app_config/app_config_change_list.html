@@ -3,7 +3,7 @@
 
 {% block extrastyle  %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'css/app_config/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/admin/nucleus/app_config/style.css' %}">
 {% endblock %}
 
 {% block extrahead  %}
@@ -19,7 +19,7 @@
         <nav class="sticky" id="nav-sidebar2" aria-label="" style="">
             <div class="config_link">
                 {% for x in result %}
-                    <p class="config_text" onclick="render_section('{{x}}')">{{x}}</p>
+                    <p style="margin: 10px; color: white;" class="config_text" onclick="render_section('{{x}}')">{{x}}</p>
                 {% endfor %}
             </div>
         </nav>

@@ -53,15 +53,11 @@ installed_apps = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'tinymce',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_toggle_switch_widget',
     'molecules',
     'nucleus',
-
-   
-
 ]
 
 # Read the dynamic apps list from the file

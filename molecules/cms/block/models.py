@@ -5,7 +5,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Blocks(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     title = models.CharField(_("title"), max_length=255)
     slug = models.SlugField(_("slug"), max_length=255, db_index=True, unique=False)
     content = models.TextField()

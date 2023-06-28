@@ -1,7 +1,8 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 import os, json
-from nucleus.management.compilation import Compilation
+from nucleus.management.compilation import *
+from pathlib import Path
 
 class Command(BaseCommand):
 
@@ -65,3 +66,36 @@ class Command(BaseCommand):
              json.dump(dictionary, config_file, indent=4)
 
         self.stdout.write(self.style.SUCCESS(f'Successfully added apps to compiled file and mainConfig.json'))
+
+
+
+def append_module_configs_to_root_config(folder_path, root_config):
+    for item in os.listdir(folder_path):
+        item_path = os.path.join(folder_path, item)
+        if os.path.isdir(item_path):
+            # Recursively traverse subdirectories
+            append_module_configs_to_root_config(item_path, root_config)
+        elif item == "app_config.json":
+            # Found app_config.json file, append its content to root_config
+            with open(item_path, "r") as f:
+                app_config = json.load(f)
+                for obj in app_config:
+                    
+                    root_config.append(obj)
+                # print(app_config)
+
+def main():
+    config_compile = Compilation_config()
+    compile_path = os.path.join(config_compile.compiled_dir, config_compile.config_file)
+    root_config = []  # Root config to store appended JSON content
+    molecules_folder = os.path.join(settings.BASE_DIR, "molecules")
+
+    append_module_configs_to_root_config(molecules_folder, root_config)
+
+    # Write the root config to the root_config.json file
+    root_config_file = compile_path
+    with open(root_config_file, "w") as f:
+        json.dump(root_config, f, indent=4)
+
+# Call the main function
+main()

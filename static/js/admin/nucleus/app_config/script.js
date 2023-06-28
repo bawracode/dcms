@@ -21,100 +21,138 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 
+default_section = sessionStorage.getItem("section_name");
+if(default_section != null){
+  render_section(default_section);
+
+}else{
+  render_section('Settings');
+}
+
 
 // get all the sections, sub-sections and fields
-async function render_sub_section(data) {
+async function render_sub_section(section_name,data) {
   const configLink = document.querySelector('.config_link2');
-  configLink.innerHTML = '';
 
-  for (let i = 0; i < Object.keys(data).length - 1; i++) {
-    const sectionData = data["sub_section"];
+  toggleVisibility(convertToClassName(section_name));
 
-    const div = document.createElement('div');
-    div.id = 'menu';
-    div.classList.add('sub_section');
+  if(checkSectionExistence(convertToClassName(section_name)) == 0){
+    console.log()
 
-    const a = document.createElement('a');
-    a.classList.add('subsection_menu');
-    a.textContent = sectionData[i].section;
+    for (let i = 0; i < Object.keys(data).length - 1; i++) {
+      const sectionData = data["sub_section"];
+  
+      const div = document.createElement('div');
+      div.id = 'menu';
+      div.classList.add(convertToClassName(section_name));
+  
+      const anchor_tag = document.createElement('a');
+      anchor_tag.style.background = "#99ccff";
+      anchor_tag.style.margin = "10px";
+      anchor_tag.style.padding = "10px";
+      anchor_tag.classList.add('subsection_menu');
+      anchor_tag.classList.add(convertToClassName(sectionData[i].section));
 
-    const innerDiv = document.createElement('div');
-    innerDiv.style.display = 'none';
-
-    for (let i = 0; i < sectionData.length; i++) {
-      let temp1 = sectionData[i];
-      for (let j = 0; j < temp1.fields.length; j++) {
-        const field = temp1.fields[j];
-
-        let element;
-        if (field.type === 'varchar') {
-          element = createTextField(field.label, field.default, field.key);
-        } else if (field.type === 'text') {
-          element = createTextArea(field.label, field.default, field.key);
-        } else if (field.type === 'single_select') {
-          all_options = await fetch_option(field.key);
-          console.log(field.default)
-          element = createSingleSelectField(
-            field.label,
-            all_options,
-            field.default,
-            field.key
-          );
-        } else if (field.type === 'switch') {
-          element = createToggleButton(field.label, eval(field.default), field.key);
-        } else if (field.type === 'multiple_select') {
-          all_options = await fetch_option(field.key);
-          
-          element = createMultipleSelectField(
-            field.label,
-            all_options,
-            field.default,
-            field.key
-          );
-        }
-
-        if (element) {
-          innerDiv.appendChild(element);
+      anchor_tag.textContent = sectionData[i].section;
+  
+      const innerDiv = document.createElement('div');
+      innerDiv.style.display = 'none';
+      innerDiv.classList.add(`${convertToClassName(sectionData[i].section)}_div`)
+      innerDiv.classList.add('subsection');
+  
+      for (let i = 0; i < sectionData.length; i++) {
+        let temp1 = sectionData[i];
+        for (let j = 0; j < temp1.fields.length; j++) {
+          const field = temp1.fields[j];
+  
+          let element;
+          if (field.type === 'varchar') {
+            element = createTextField(field.label, field.default, field.key);
+          } else if (field.type === 'text') {
+            element = createTextArea(field.label, field.default, field.key);
+          } else if (field.type === 'single_select') {
+            all_options = await fetch_option(field.key);
+            console.log(field.default)
+            element = createSingleSelectField(
+              field.label,
+              all_options,
+              field.default,
+              field.key
+            );
+          } else if (field.type === 'switch') {
+            element = createToggleButton(field.label, eval(field.default), field.key);
+          } else if (field.type === 'multiple_select') {
+            console.log(field.default)
+            all_options = await fetch_option(field.key);
+            
+            element = createMultipleSelectField(
+              field.label,
+              all_options,
+              field.default,
+              field.key
+            );
+          }
+  
+          if (element) {
+            innerDiv.appendChild(element);
+          }
         }
       }
+  
+      div.appendChild(anchor_tag);
+      div.appendChild(document.createElement('br'));
+      div.appendChild(innerDiv);
+  
+      const saveButton = document.createElement('button');
+      saveButton.textContent = 'Save';
+      anchor_tag.addEventListener('click', function () {
+      if(innerDiv.style.display == 'none'){
+      
+        sessionStorage.setItem("sub_section",`${convertToClassName(sectionData[i].  section)}_div`);
+      }else{
+        sessionStorage.removeItem("sub_section");
+      }
+
+      
+      });
+  
+      saveButton.addEventListener('click', async function () {
+        const inputs = innerDiv.querySelectorAll('input, select, textarea');
+      
+        const formData = {};
+  
+        for (let i = 0; i < inputs.length; i++) {
+          const input = inputs[i];
+  
+          if (input.type === 'checkbox') {
+            formData[input.classList[0]] = getCheckboxValues(input.classList[0]);
+          }
+          else{
+            formData[input.classList[0]] = input.value;
+          }
+        }
+        save_change_value(formData);
+      });
+  
+      innerDiv.appendChild(saveButton);
+      configLink.appendChild(div);
+
+      default_sub_section = sessionStorage.getItem("sub_section");
+      if(default_sub_section != null){
+        let temp = document.getElementsByClassName(default_sub_section);
+        if(temp.length > 0){
+          temp[0].style.display = "block";
+        }
+      } 
     }
-
-    div.appendChild(a);
-    div.appendChild(document.createElement('br'));
-    div.appendChild(innerDiv);
-
-    const saveButton = document.createElement('button');
-    saveButton.textContent = 'Save';
-
-    saveButton.addEventListener('click', async function () {
-      const inputs = innerDiv.querySelectorAll('input, select, textarea');
-    
-      const formData = {};
-
-      for (let i = 0; i < inputs.length; i++) {
-        const input = inputs[i];
-
-        if (input.type === 'checkbox') {
-          formData[input.id] = input.checked;
-        }
-        else{
-          formData[input.id] = input.value;
-        }
-      }
-
-      console.log(formData);
-
-      save_change_value(formData);
+  
+    $(`#menu > a`).click(function () {
+      $(this).next().next().slideToggle();
+      return false;
     });
-
-    innerDiv.appendChild(saveButton);
-    configLink.appendChild(div);
   }
-
-  $('#menu > a').click(function () {
-    $(this).next().next().slideToggle();
-    return false;
-  });
+  // configLink.innerHTML = '';
+  
 }
 
 
@@ -133,15 +171,16 @@ function createMultipleSelectField(label, all_options, defaultValues, key) {
     checkbox.type = 'checkbox';
     checkbox.name = label;
     checkbox.value = all_options[i];
-    checkbox.id = key + '-' + i;
+    checkbox.id = key + i;
+    checkbox.classList.add(key);
 
     if (defaultValues.includes(all_options[i])) {
-      checkbox.checked = true; // Set the default options as checked
+      checkbox.checked = true; 
     }
 
     const checkboxLabel = document.createElement('label');
     checkboxLabel.textContent = all_options[i];
-    checkboxLabel.setAttribute('for', key + '-' + i);
+    checkboxLabel.setAttribute('for', key + i);
 
     option.appendChild(checkbox);
     option.appendChild(checkboxLabel);
@@ -170,6 +209,7 @@ function createToggleButton(label, defaultValue, key) {
   input.name = label;
   input.checked = defaultValue;
   input.id = key;
+  input.classList.add(key);
 
   input.addEventListener('change', function () {
     const isChecked = input.checked;
@@ -200,6 +240,8 @@ function createSingleSelectField(label, all_options, defaultValue, key) {
   const select = document.createElement('select');
   select.name = label;
   select.id = key;
+  select.classList.add(key);
+
 
   for (let i = 0; i < all_options.length; i++) {
     const option = document.createElement('option');
@@ -235,6 +277,7 @@ input.type = 'text';
 input.name = label;
 input.id = key;
 input.value = defaultValue || '';
+input.classList.add(key);
 
 const br = document.createElement('br');
 
@@ -258,6 +301,8 @@ textarea.id = key;
 textarea.rows = '4';
 textarea.cols = '50';
 textarea.textContent = defaultValue || '';
+textarea.classList.add(key);
+
 
 const br = document.createElement('br');
 
@@ -300,6 +345,9 @@ console.error('Error:', error);
 }
 
 
+
+
+
 // render sub section
 function render_section(section_name){
 
@@ -323,7 +371,8 @@ fetch(url, {
     throw new Error('Error: ' + response.status);
   })
   .then(responseData => {
-    render_sub_section(responseData)
+    sessionStorage.setItem("section_name", section_name);
+    render_sub_section(section_name,responseData)
     
   })
   .catch(error => {
@@ -372,4 +421,53 @@ fetch('/app_config/save_change_value/', {
   .catch(error => {
     console.error('Error:', error);
   });
+}
+
+
+// make array of checked checkboxes
+function getCheckboxValues(className) {
+  var checkboxValues = [];
+  var checkboxes = document.querySelectorAll('.' + className);
+  if (checkboxes.length === 1) {
+    var checkbox = checkboxes[0];
+    var checkboxValue = checkbox.checked;
+    return checkboxValue;
+  } else {
+    for (var i = 0; i < checkboxes.length; i++) {
+      var checkbox = checkboxes[i];
+      if (checkbox.checked)
+      {
+        checkboxValues.push(checkbox.value);
+      }
+    }
+    return checkboxValues;
+  }
+}
+
+function convertToClassName(str) {
+  return str.replace(/\s+/g, '_');
+}
+
+
+function toggleVisibility(className) {
+  var parentContainer = document.querySelector('.config_link2');
+  var childElements = parentContainer.children;
+  for (var i = 0; i < childElements.length; i++) {
+    var child = childElements[i];
+    if (child.classList.contains(className)) {
+      child.style.display = 'flex';
+    } else {
+      child.style.display = 'none';
+    }
+  }
+}
+
+function checkSectionExistence(className) {
+  var parentContainer = document.querySelector('.config_link2');
+  var section = parentContainer.querySelector('.' + className);
+  if (section) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
