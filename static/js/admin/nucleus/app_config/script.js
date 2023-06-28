@@ -34,7 +34,7 @@ if(default_section != null){
 async function render_sub_section(section_name,data) {
   const configLink = document.querySelector('.config_link2');
 
-  // toggleVisibility(convertToClassName(section_name));
+  toggleVisibility(convertToClassName(section_name));
 
   if(checkSectionExistence(convertToClassName(section_name)) == 0){
     console.log()

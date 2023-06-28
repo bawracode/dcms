@@ -1,8 +1,8 @@
-molecules.test1
 molecules.app_config
+molecules.cms.block
 molecules.cms.cms_logs
 molecules.cms.pages
-molecules.cms.block
-molecules.test3
-molecules.test2
 molecules.cron
+molecules.test1
+molecules.test2
+molecules.test3

@@ -51,12 +51,13 @@ def return_sub_section(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         section_name = data['section_name']
+        print(section_name)
 
         for i in json_data:
             if i.get('section') == section_name:
                 sub_section = i.get('sub')
                 break
-
+        print(sub_section)
         response_data = {
             'sub_section': sub_section,
             'status': 'success'
