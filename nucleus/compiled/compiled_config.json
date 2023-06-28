@@ -1,0 +1,122 @@
+[
+    [
+        {
+            "section": "Settings",
+            "order_number": "9999",
+            "sub": [
+                {
+                    "section": "Cron Configuration",
+                    "template": "",
+                    "fields": [
+                        {
+                            "label": "Last Schedule Generated",
+                            "key": "settings_cron_configuration_last_schedule_generated",
+                            "info": "It registers when the last cron schedule was generated",
+                            "order_number": "9999",
+                            "type": "varchar",
+                            "source": "path_to_options",
+                            "default": "19854 62378"
+                        },
+                        {
+                            "label": "Other field",
+                            "key": "settings_cron_configuration_other_field",
+                            "info": "Some infofor this field",
+                            "type": "text",
+                            "default": "Hello world! jignesh ",
+                            "order_number": "9999"
+                        },
+                        {
+                            "label": "status",
+                            "key": "settings_cron_configuration_status",
+                            "info": "status of session",
+                            "type": "single_select",
+                            "default": "ON",
+                            "source": "molecules_test1_source_status",
+                            "order_number": "9999"
+                        },
+                        {
+                            "label": "toggle_switch",
+                            "key": "settings_cron_configuration_toggle_switch",
+                            "info": "status of session",
+                            "type": "switch",
+                            "default": true,
+                            "order_number": "9999"
+                        },
+                        {
+                            "label": "multiple_select",
+                            "key": "settings_cron_configuration_multiple_select",
+                            "info": "multiple_select select test",
+                            "type": "multiple_select",
+                            "default": [
+                                "B",
+                                "C"
+                            ],
+                            "source": "molecules_test1_source_multipleSelect",
+                            "order_number": "9999"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "section": "Settings 1",
+            "order_number": "9999",
+            "sub": [
+                {
+                    "section": "Cron Configuration 1",
+                    "template": "",
+                    "fields": [
+                        {
+                            "label": "Last Schedule Generated",
+                            "key": "settings_cron_configuration_last_schedule_generated",
+                            "info": "It registers when the last cron schedule was generated",
+                            "order_number": "9999",
+                            "type": "varchar",
+                            "source": "path_to_options",
+                            "default": "19854 62378"
+                        },
+                        {
+                            "label": "Other field",
+                            "key": "settings_cron_configuration_other_field",
+                            "info": "Some infofor this field",
+                            "type": "text",
+                            "default": "Hello world! jignesh ",
+                            "order_number": "9999"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "section": "test settting 1",
+            "order_number": "9999",
+            "sub": [
+                {
+                    "section": "Cron Configuration 1",
+                    "template": "",
+                    "fields": [
+                        {
+                            "label": "Last Schedule Generated",
+                            "key": "settings_cron_configuration_last_schedule_generated",
+                            "info": "It registers when the last cron schedule was generated",
+                            "order_number": "9999",
+                            "type": "varchar",
+                            "source": "path_to_options",
+                            "default": "19854 62378"
+                        },
+                        {
+                            "label": "Other field",
+                            "key": "settings_cron_configuration_other_field",
+                            "info": "Some infofor this field",
+                            "type": "text",
+                            "default": "Hello world! jignesh ",
+                            "order_number": "9999"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+]
