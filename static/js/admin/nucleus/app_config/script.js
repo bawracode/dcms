@@ -24,8 +24,9 @@ const csrftoken = getCookie('csrftoken');
 default_section = sessionStorage.getItem("section_name");
 if(default_section != null){
   render_section(default_section);
-  default_sub_section = sessionStorage.getItem("sub_section");
-  console.log(convertToClassName(default_sub_section))
+
+}else{
+  render_section('Settings');
 }
 
 
@@ -102,7 +103,14 @@ async function render_sub_section(section_name,data) {
 
 
       anchor_tag.addEventListener('click', function () {
-      sessionStorage.setItem("sub_section",`${convertToClassName(sectionData[i].section)}_div`);
+      if(innerDiv.style.display == 'none'){
+      
+        sessionStorage.setItem("sub_section",`${convertToClassName(sectionData[i].  section)}_div`);
+      }else{
+        sessionStorage.removeItem("sub_section");
+      }
+
+      
       });
   
       saveButton.addEventListener('click', async function () {

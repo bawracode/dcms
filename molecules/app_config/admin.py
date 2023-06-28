@@ -18,7 +18,8 @@ class app_configAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
 
         # Load JSON data from file
-        with open(os.path.join(base_dir,'molecules','app_config','app_config.json')) as json_file:
+        #nucleus\compiled\compiled_config.json
+        with open(os.path.join(base_dir,'nucleus','compiled','compiled_config.json')) as json_file:
             json_data = json.load(json_file)
 
         result = []
