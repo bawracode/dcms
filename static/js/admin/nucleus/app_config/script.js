@@ -45,14 +45,14 @@ async function render_sub_section(section_name,data) {
       div.id = 'menu';
       div.classList.add(convertToClassName(section_name));
   
-      const a = document.createElement('a');
-      a.classList.add('subsection_menu');
-      a.classList.add(convertToClassName(sectionData[i].section));
-      a.textContent = sectionData[i].section;
+      const anchor_tag = document.createElement('a');
+      anchor_tag.classList.add('subsection_menu');
+      anchor_tag.classList.add(convertToClassName(sectionData[i].section));
+      anchor_tag.textContent = sectionData[i].section;
   
       const innerDiv = document.createElement('div');
       innerDiv.style.display = 'none';
-      innerDiv.classList.add(convertToClassName(sectionData[i].section))
+      innerDiv.classList.add(`${convertToClassName(sectionData[i].section)}_div`)
   
       for (let i = 0; i < sectionData.length; i++) {
         let temp1 = sectionData[i];
