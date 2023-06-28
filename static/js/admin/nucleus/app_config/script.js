@@ -34,7 +34,7 @@ if(default_section != null){
 async function render_sub_section(section_name,data) {
   const configLink = document.querySelector('.config_link2');
 
-  toggleVisibility(convertToClassName(section_name));
+  // toggleVisibility(convertToClassName(section_name));
 
   if(checkSectionExistence(convertToClassName(section_name)) == 0){
     console.log()
@@ -58,6 +58,7 @@ async function render_sub_section(section_name,data) {
       const innerDiv = document.createElement('div');
       innerDiv.style.display = 'none';
       innerDiv.classList.add(`${convertToClassName(sectionData[i].section)}_div`)
+      innerDiv.classList.add('subsection');
   
       for (let i = 0; i < sectionData.length; i++) {
         let temp1 = sectionData[i];
@@ -454,7 +455,7 @@ function toggleVisibility(className) {
   for (var i = 0; i < childElements.length; i++) {
     var child = childElements[i];
     if (child.classList.contains(className)) {
-      child.style.display = 'block';
+      child.style.display = 'flex';
     } else {
       child.style.display = 'none';
     }
