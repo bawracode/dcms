@@ -79,7 +79,9 @@ def append_module_configs_to_root_config(folder_path, root_config):
             # Found app_config.json file, append its content to root_config
             with open(item_path, "r") as f:
                 app_config = json.load(f)
-                root_config.append(app_config)
+                for obj in app_config:
+                    
+                    root_config.append(obj)
                 # print(app_config)
 
 def main():
