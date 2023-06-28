@@ -53,7 +53,8 @@ class Command(TemplateCommand):
             'app_name': app_name,
             'path': target,
             'status': 'active',
-            'jsfiles': []
+            'jsfiles': [],
+            'cssfiles': []
         }
 
 
