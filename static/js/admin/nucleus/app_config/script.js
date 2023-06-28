@@ -47,8 +47,12 @@ async function render_sub_section(section_name,data) {
       div.classList.add(convertToClassName(section_name));
   
       const anchor_tag = document.createElement('a');
+      anchor_tag.style.background = "#99ccff";
+      anchor_tag.style.margin = "10px";
+      anchor_tag.style.padding = "10px";
       anchor_tag.classList.add('subsection_menu');
       anchor_tag.classList.add(convertToClassName(sectionData[i].section));
+
       anchor_tag.textContent = sectionData[i].section;
   
       const innerDiv = document.createElement('div');
@@ -100,8 +104,6 @@ async function render_sub_section(section_name,data) {
   
       const saveButton = document.createElement('button');
       saveButton.textContent = 'Save';
-
-
       anchor_tag.addEventListener('click', function () {
       if(innerDiv.style.display == 'none'){
       
