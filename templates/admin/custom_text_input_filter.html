@@ -1,0 +1,33 @@
+{% load i18n admin_list %}
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        // Get the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const params = {};
+        
+        // Iterate over the query parameters and store them in the params object
+        urlParams.forEach(function(value, key) {
+            params[key] = value;
+        });
+        
+        // Use the params object in your code
+        if (params.{{title}}!=null)
+        {
+            document.getElementById("{{title}}Text").value=params.{{title}};
+        }
+      });
+    var go_from_select = function(value) {
+        window.location = window.location.pathname + '?{{ title }}='+value
+        
+    };
+</script>
+<h3>By {{ title }}</h3>
+<div class="input-group" style="margin: 5%;">
+    <input type="text" id="{{ title }}Text" class="form-control">
+    <span class="input-group-btn">
+        <button type="button" class="button"
+            onclick="go_from_select(document.getElementById('{{ title }}Text').value)">
+            {% trans 'Go' %}
+        </button>
+    </span>
+</div>

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Blocks
 from django import forms
+from app import custom_filter
 
 class BlocksForm(forms.ModelForm):
     content = forms.CharField(
@@ -16,3 +17,11 @@ class BlocksForm(forms.ModelForm):
 class BlockAdmin(admin.ModelAdmin):
     form = BlocksForm
     list_display = ("id",'slug', 'status',"block_status",'created_at', 'updated_at',"formatted_full_url")
+    list_filter = (
+        ('slug', custom_filter.TextInputFilter),
+        ('status', custom_filter.TextDropDownFilter),
+        ('block_status', custom_filter.TextDropDownFilter),
+        # Add more filters for other fields
+    )
+    # list_filter=("slug",)
+    
