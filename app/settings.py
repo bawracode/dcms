@@ -47,8 +47,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,9 +59,6 @@ installed_apps = [
     'django_toggle_switch_widget',
     'molecules',
     'nucleus',
-
-   
-
 ]
 
 # Read the dynamic apps list from the file
