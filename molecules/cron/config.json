@@ -2,5 +2,6 @@
     "app_name": "cms_cron",
     "path": "/Users/jashkakadiya/Downloads/cms/molecules/cron",
     "status": "active",
-    "jsfiles": []
+    "jsfiles": [],
+    "cssfiles": []
 }
