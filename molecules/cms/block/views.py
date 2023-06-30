@@ -58,6 +58,6 @@ def render_block(request,slug_url):
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})
     rendered_template = template.render(context)
-    PageLog.objects.create(user=request.user, action="Page created", ip_address=request.META.get('REMOTE_ADDR'))
+    BlockLog.objects.create(user=request.user, action=f"Block {block.slug}created", ip_address=request.META.get('REMOTE_ADDR'))
     
     return str(rendered_template)

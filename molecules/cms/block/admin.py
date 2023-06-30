@@ -23,5 +23,6 @@ class BlockAdmin(admin.ModelAdmin):
         ('block_status', custom_filter.TextDropDownFilter),
         # Add more filters for other fields
     )
+    prepopulated_fields = {'slug': ('title',)}
     # list_filter=("slug",)
     

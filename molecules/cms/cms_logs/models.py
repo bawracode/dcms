@@ -7,19 +7,19 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.utils import timezone
 
 class PageLog(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.CharField(_("user"), max_length=255)
     action = models.CharField(max_length=255)
     ip_address = models.GenericIPAddressField()
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):
-        return f"{self.user.username} - {self.action}"
+        return f"{self.user.username} - {self.action} - {self.created_at}"
 
 class BlockLog(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.CharField(_("user"), max_length=255)
     action = models.CharField(max_length=255)
     ip_address = models.GenericIPAddressField()
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):
-        return f"{self.user.username} - {self.action}"
+        return f"{self.user.username} - {self.action} - {self.created_at}"
