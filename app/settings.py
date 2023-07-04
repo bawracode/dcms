@@ -47,8 +47,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +56,9 @@ installed_apps = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_toggle_switch_widget',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
     'molecules',
     'nucleus',
 ]
@@ -82,6 +85,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'nucleus.middelware.middleware.RequestMiddleware',
+    'molecules.api.middlewares.APILogMiddleware',
     
 ]
 
@@ -106,6 +110,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'api_calls.log',  # Specify the log file name and location
+        },
+    },
+    'loggers': {
+        'api_calls': {
+            'handlers': ['file', 'console'],  # Use both file and console handlers
+            'level': 'INFO',
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
