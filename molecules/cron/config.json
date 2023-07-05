@@ -1,7 +1,12 @@
 {
     "app_name": "cms_cron",
-    "path": "/Users/jashkakadiya/Downloads/cms/molecules/cron",
+    "path": "/Users/jashkakadiya/Downloads/cms/molecules/cron/config.json",
     "status": "active",
-    "jsfiles": [],
+    "jsfiles": [
+        {
+            "src": "/Users/jashkakadiya/Downloads/cms/static/js/admin/cron/script.js",
+            "defer": true
+        }
+    ],
     "cssfiles": []
 }

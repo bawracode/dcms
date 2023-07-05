@@ -7,4 +7,4 @@ molecules.api
 molecules.test3
 molecules.test2
 molecules.cron
-nucleus.user
+nucleus.users
