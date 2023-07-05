@@ -45,11 +45,17 @@ class SystemConfigAdmin(admin.ModelAdmin):
     search_fields = ('api_name','config_value')
     def render_toggle_switch(self, obj):
         change = ""
+         
         if obj.config_value:
             change = "checked"
-        else:
-            change = "unchecked"
-        return format_html('<input type="checkbox" class="toggle-switch" {} onclick="toggleSwitchChanged({}, \'{}\')">'.format(change,obj.id, change))
+        # print(obj.config_value,"self")
+        return format_html('''
+        <label class="switch">
+<input type="checkbox" class="toggle-switch" {} onclick="toggleSwitchChanged({})">
+  <span class="slider round"></span>
+</label>
+        
+        '''.format(change,obj.id))
 
 
     render_toggle_switch.short_description = 'Toggle Switch'
