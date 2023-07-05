@@ -38,7 +38,7 @@
                         "key": "settings_cron_configuration_toggle_switch",
                         "info": "status of session",
                         "type": "switch",
-                        "default": true,
+                        "default": false,
                         "order_number": "9999"
                     },
                     {

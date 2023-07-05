@@ -4,7 +4,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from rest_framework import routers
-from molecules.api.views import UserViewSet, PostViewSet
+from molecules.api.views import *
 from molecules.api.models import SystemConfig
 
 
@@ -34,4 +34,5 @@ urlpatterns = [
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
  path("", include(routers.urls)),
+ path('toggle_ajax/', toggle_switch_ajax, name='toggle_switch_ajax'),
 ]

@@ -7,6 +7,8 @@ from django.forms import ModelForm
 from django import forms
 from django.conf import settings
 import os
+from django.utils.html import format_html
+
 from django_toggle_switch_widget.widgets import DjangoToggleSwitchWidget
 
 
@@ -39,9 +41,16 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(SystemConfig)
 class SystemConfigAdmin(admin.ModelAdmin):
     form = Sysconfigform
-    list_display = ('api_name','config_value')
+    list_display = ('api_name','render_toggle_switch')
     search_fields = ('api_name','config_value')
-    # def changelist_view(self, request, extra_context=None):
-    #     extra_context = extra_context or {}
-    #     extra_context['title'] = SystemConfig.objects.values_list('api_name', 'config_value')
-    #     return super().changelist_view(request, extra_context=extra_context)
+    def render_toggle_switch(self, obj):
+        change = ""
+        if obj.config_value:
+            change = "checked"
+        else:
+            change = "unchecked"
+        return format_html('<input type="checkbox" class="toggle-switch" {} onclick="toggleSwitchChanged({}, \'{}\')">'.format(change,obj.id, change))
+
+
+    render_toggle_switch.short_description = 'Toggle Switch'
+

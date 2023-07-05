@@ -1,0 +1,121 @@
+{% load custom_filter.custom_filter %}
+    <style>
+
+  
+  .sortable-list {
+    width: 425px;
+    height:auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 7px;
+    padding: 30px 25px 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  .sortable-list .item {
+    list-style: none;
+    display: flex;
+    cursor: move;
+    background: #fff;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 13px;
+    margin-bottom: 11px;
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.06); */
+    border: 1px solid #ccc;
+    justify-content: space-between;
+  }
+  .item .details {
+    display: flex;
+    align-items: center;
+  }
+  .item .details img {
+    height: 43px;
+    width: 43px;
+    pointer-events: none;
+    margin-right: 12px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .item .details span {
+    font-size: 1.13rem;
+  }
+  .item i {
+    color: #474747;
+    font-size: 1.13rem;
+  }
+  .item.dragging {
+    opacity: 0.6;
+  }
+  .item.dragging :where(.details, i) {
+    opacity: 0;
+  }
+</style>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+      
+
+      <ul class="sortable-list">
+        <div>
+        <h2 style="float:left;margin:10px">Column Mapper</h2>
+          <button style="float:right"  onclick="closePopupModel();"><img src="/static/admin/img/icon-deletelink.svg" alt="True"></button>
+        </div>
+        <hr>
+          {% for i in columns%}
+        <li class="item" draggable="true">
+          <div class="details">
+            
+            <input type="checkbox" {%if i.default %} checked {%endif%}>
+
+            <span style="margin-left:50px">{{i.column_name}}</span>
+          </div>
+          <i class="uil uil-draggabledots"></i>
+        </li>
+        {%endfor%}
+      </ul>
+      <button type="button" class="button"  onclick="closePopupModel();">Save</button>
+       
+      <script defer>
+        const sortableList = document.querySelector(".sortable-list");
+        const items = sortableList.querySelectorAll(".item");
+  
+            items.forEach(item => {
+                item.addEventListener("dragstart", () => {
+                    // Adding dragging class to item after a delay
+                    setTimeout(() => item.classList.add("dragging"), 0);
+                });
+                // Removing dragging class from item on dragend event
+                item.addEventListener("dragend", () => {
+                  item.classList.remove("dragging");
+                  logUpdatedOrder(); // Call the function to log the updated order
+                });
+                
+            });
+            
+            const initSortableList = (e) => {
+                e.preventDefault();
+                const draggingItem = document.querySelector(".dragging");
+                // Getting all items except currently dragging and making array of them
+                let siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
+            
+                // Finding the sibling after which the dragging item should be placed
+                let nextSibling = siblings.find(sibling => {
+                    return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+                });
+            
+                // Inserting the dragging item before the found sibling
+                sortableList.insertBefore(draggingItem, nextSibling);
+               
+              }
+            
+            
+            sortableList.addEventListener("dragover", initSortableList);
+            sortableList.addEventListener("dragenter", e => e.preventDefault());
+            function logUpdatedOrder() {
+              const updatedOrder = [...sortableList.querySelectorAll(".item")].map(item => item.querySelector("span").textContent);
+              console.log(updatedOrder);
+              {% comment %} console.log({{cl.list_display|safe }}) {% endcomment %}
+              
+            }
+      </script>
+
+      

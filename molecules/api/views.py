@@ -40,3 +40,34 @@ class PostViewSet(viewsets.ModelViewSet):
         if title is not None:
             queryset = queryset.filter(title=title)
         return queryset
+
+from django.http import JsonResponse
+
+# def toggle_switch_ajax(request):
+#     if request.method == 'POST':
+#         id = request.POST.get('id')
+#         value = request.POST.get('value')
+#         if value=="checked":
+#             value=False
+#         else:
+#             value=True
+#         print(id,value,"id,value")
+#         obj = SystemConfig.objects.get(id=id)
+#         obj.config_value = value
+#         obj.save()
+#     return JsonResponse({'success': True})
+
+def toggle_switch_ajax(request):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        value = request.POST.get('value')
+        if value == "checked":
+            value = False
+        else:
+            value = True
+        print(id, value, "id,value")
+        obj = SystemConfig.objects.get(id=id)
+        obj.config_value = value
+        obj.save()
+        return JsonResponse({'success': True, 'config_value': obj.config_value})
+    return JsonResponse({'success': False})
