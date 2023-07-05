@@ -1,34 +1,5 @@
 [
     {
-        "section": "test settting 1",
-        "order_number": "9999",
-        "sub": [
-            {
-                "section": "Cron Configuration 1",
-                "template": "",
-                "fields": [
-                    {
-                        "label": "Last Schedule Generated",
-                        "key": "test_settting_1_cron_configuration_last_schedule_generated",
-                        "info": "It registers when the last cron schedule was generated",
-                        "order_number": "9999",
-                        "type": "varchar",
-                        "source": "path_to_options",
-                        "default": "19854 62378"
-                    },
-                    {
-                        "label": "Other field 2",
-                        "key": "other_field_2_cron_configuration_other_field",
-                        "info": "Some infofor this field",
-                        "type": "text",
-                        "default": "Hello world! jignesh  test",
-                        "order_number": "9999"
-                    }
-                ]
-            }
-        ]
-    },
-    {
         "section": "Settings",
         "order_number": "9999",
         "sub": [
@@ -50,7 +21,7 @@
                         "key": "settings_cron_configuration_other_field",
                         "info": "Some infofor this field",
                         "type": "text",
-                        "default": "Hello world! jignesh  sett",
+                        "default": "Hello world! jignesh ",
                         "order_number": "9999"
                     },
                     {
@@ -108,7 +79,36 @@
                         "key": "settings_1_cron_configuration_other_field",
                         "info": "Some infofor this field",
                         "type": "text",
-                        "default": "Hello world! jignesh settin1 ",
+                        "default": "Hello world! jignesh ",
+                        "order_number": "9999"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "section": "test settting 1",
+        "order_number": "9999",
+        "sub": [
+            {
+                "section": "Cron Configuration 1",
+                "template": "",
+                "fields": [
+                    {
+                        "label": "Last Schedule Generated",
+                        "key": "test_settting_ 1_cron_configuration_last_schedule_generated",
+                        "info": "It registers when the last cron schedule was generated",
+                        "order_number": "9999",
+                        "type": "varchar",
+                        "source": "path_to_options",
+                        "default": "19854 62378"
+                    },
+                    {
+                        "label": "Other field 2",
+                        "key": "other_field_2_cron_configuration_other_field",
+                        "info": "Some infofor this field",
+                        "type": "text",
+                        "default": "Hello world! jignesh ",
                         "order_number": "9999"
                     }
                 ]
