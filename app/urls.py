@@ -1,5 +1,3 @@
-from django.contrib import admin
-from django.urls import path, include
 import json,os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
