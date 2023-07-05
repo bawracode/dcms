@@ -2,7 +2,20 @@ from django.contrib import admin
 from .models import Blocks
 from django import forms
 from app import custom_filter
-
+from nucleus.controller.main_controller import ColumnController
+from app import base_admin
+columns_in_use=[
+    {"column_name":"id","default":True,"sort_order":10,"filter":None},
+    {"column_name":"title","default":False,"sort_order":20,"filter":None},
+    {"column_name":"content","default":False,"sort_order":30,"filter":None},
+    
+    {"column_name":"slug","default":True,"sort_order":20,"filter":custom_filter.TextInputFilter},
+    {"column_name":"status","default":True,"sort_order":30,"filter":custom_filter.TextDropDownFilter},
+    {"column_name":"block_status","default":True,"sort_order":40,"filter":custom_filter.TextDropDownFilter},
+    {"column_name":"created_at","default":True,"sort_order":50,"filter":None},
+    {"column_name":"updated_at","default":True,"sort_order":60,"filter":None},
+    {"column_name":"formatted_full_url","default":None,"sort_order":70,"filter":None},
+]
 class BlocksForm(forms.ModelForm):
     content = forms.CharField(
         widget=forms.Textarea(attrs={'rows': 30, 'cols': 100}),  # Adjust rows and cols values as per your preference
@@ -12,16 +25,19 @@ class BlocksForm(forms.ModelForm):
         model = Blocks
         fields = '__all__'
 
+
+
 # Register your models here.
 @admin.register(Blocks)
-class BlockAdmin(admin.ModelAdmin):
+class BlockAdmin(base_admin.BaseModelAdmin):
     form = BlocksForm
-    list_display = ("id",'slug', 'status',"block_status",'created_at', 'updated_at',"formatted_full_url")
-    list_filter = (
-        ('slug', custom_filter.TextInputFilter),
-        ('status', custom_filter.TextDropDownFilter),
-        ('block_status', custom_filter.TextDropDownFilter),
-        # Add more filters for other fields
-    )
-    # list_filter=("slug",)
+       
+    columns=ColumnController(columns_in_use)
+    list_display = columns.get_list_display()
+    
+    list_filter = columns.get_list_filter()
+    def changelist_view(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['columns']=columns_in_use
+        return super().changelist_view(request, extra_context)
     
