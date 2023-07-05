@@ -98,3 +98,5 @@ class TextInputFilter(FieldListFilter):
 
     def value(self):
         return self.used_parameters.get(self.field_path) or self.used_parameters.get(self.field_path + '__icontains')
+
+

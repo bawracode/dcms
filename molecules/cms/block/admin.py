@@ -40,4 +40,6 @@ class BlockAdmin(base_admin.BaseModelAdmin):
         extra_context = extra_context or {}
         extra_context['columns']=columns_in_use
         return super().changelist_view(request, extra_context)
+    prepopulated_fields = {'slug': ('title',)}
+    # list_filter=("slug",)
     

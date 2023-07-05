@@ -1,8 +1,14 @@
-from django.contrib import admin
-from django.urls import path, include
 import json,os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib import admin
+from django.urls import path ,include
+from rest_framework.authtoken.views import obtain_auth_token
+
+
+
 
 
 def get_active_modules():
@@ -19,7 +25,9 @@ base_directory = Path(__file__).resolve().parent.parent
 
 urlpatterns = [
     path(_('admin/'), admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
+    
 
 
 for module in active_modules:

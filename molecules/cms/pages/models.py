@@ -2,7 +2,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.utils.html import format_html
+from nucleus.middelware.middleware import get_current_request
 
+from molecules.cms.cms_logs.models import *
 
 
 
@@ -33,6 +35,15 @@ class CustomPage(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        request = get_current_request()
+        if request and request.user.is_staff:
+            # Create a PageLog instance when the current model is created by an admin
+            admin_username = request.user.username
+            PageLog.objects.create(user=admin_username, action=f"Page {self.slug} created", ip_address=request.META.get('REMOTE_ADDR'))
+
+        super().save(*args, **kwargs)
 
     def formatted_full_url(self):
         full_url = f"http://127.0.0.1:8000/cms/pages/{self.slug}"

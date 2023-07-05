@@ -56,6 +56,9 @@ installed_apps = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_toggle_switch_widget',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
     'molecules',
     'nucleus',
 ]
@@ -81,6 +84,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'nucleus.middelware.middleware.RequestMiddleware',
+    'molecules.api.middlewares.APILogMiddleware',
     
 ]
 
@@ -105,6 +110,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'api_calls.log',  # Specify the log file name and location
+        },
+    },
+    'loggers': {
+        'api_calls': {
+            'handlers': ['file', 'console'],  # Use both file and console handlers
+            'level': 'INFO',
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -148,7 +172,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
