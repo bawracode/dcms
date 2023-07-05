@@ -3,78 +3,42 @@
 {% load static %}
 
 {% block extrastyle %}
-    {{ block.super }}
-<style>
-    .toggle-switch {
-  position: relative;
-  width: 40px;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 15px;
-  overflow: hidden;
-}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      
+{{ block.super }}
 
-.toggle-switch input[type="checkbox"] {
-  display: none;
-}
-
-.toggle-switch label.toggle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: #fff;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.toggle-switch input[type="checkbox"]:checked + label.toggle {
-  transform: translateX(20px);
-}
-
-</style>
     <script>
 
-        window.onload = function() {
-            
-// Get the container element with class "field-config_value"
-const container = document.querySelector('.field-config_value');
+        // window.onload = function() {
 
-
-document.querySelector('.field-config_value').querySelector('img').remove()
-// Create the label element
-const label = document.createElement('label');
-
-
-// Create the toggle switch container
-const toggleContainer = document.createElement('div');
-toggleContainer.classList.add('toggle-switch');
-
-// Create the input element
-const toggleInput = document.createElement('input');
-toggleInput.type = 'checkbox';
-toggleInput.id = 'scrollToggle';
-
-// Create the toggle switch label
-const toggleLabel = document.createElement('label');
-toggleLabel.htmlFor = 'scrollToggle';
-toggleLabel.classList.add('toggle');
-
-// Append the input and label to the toggle switch container
-toggleContainer.appendChild(toggleInput);
-toggleContainer.appendChild(toggleLabel);
-
-// Append the label and toggle switch container to the main container
-container.appendChild(label);
-container.appendChild(toggleContainer);
-
-
-
-
-
+      function toggleSwitchChanged(rowId,value) {
+    
+    $.ajax({
+        url: '/api/toggle_ajax/',
+        method: 'POST',
+        data: {
+            id: rowId,
+            value: value,
+            // Include any other data needed for the AJAX request
+            csrfmiddlewaretoken: '{{ csrf_token }}' // Include CSRF token for Django POST requests
+        },
+        success: function(response) {
+            // Handle the AJAX response
+            if (response.success) {
+                // Update the table data or perform any other necessary actions
+            }
+        },
+        error: function(error) {
+            // Handle AJAX error
+        }
+    });
+    // e.preventDefault();
 
 }
+
+// }
 
 
     </script>
