@@ -61,7 +61,12 @@ installed_apps = [
     'drf_yasg',
     'molecules',
     'nucleus',
+    'django_cron',
 ]
+CRON_CLASSES = [
+    'molecules.api.cron.ClearAPILogsCronJob',
+]
+
 
 # Read the dynamic apps list from the file
 dynamicappfile = os.path.join(compilation.compiled_dir, compilation.apps_file)

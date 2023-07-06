@@ -11,6 +11,23 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         base_dir = settings.BASE_DIR
+
+        # update paths in config.json files according system
+        for root, dirs, files in os.walk(base_dir):
+            for dir in dirs:
+                if dir == 'molecules' or dir == 'nucleus':
+                    for root, dirs, files in os.walk(os.path.join(base_dir, dir)):
+                        for file in files:
+                            if file == 'config.json':
+                                with open(os.path.join(root, file), 'r+') as json_file:
+                                    data = json.load(json_file)
+                                    print(data)
+                                    path = os.path.join(root, file)
+                                    data['path'] = path
+                                    json_file.seek(0)
+                                    json.dump(data, json_file, indent=4)
+                                    json_file.truncate()
+
         def get_file_extension(file_path):
              _, extension = os.path.splitext(file_path)
              return extension
@@ -46,7 +63,6 @@ class Command(BaseCommand):
                         src = os.path.join(app_path, file)
                         defer = True
                     
-
                         def get_file_extension(file_path):
                             _, extension = os.path.splitext(file_path)
                             return extension
@@ -59,12 +75,14 @@ class Command(BaseCommand):
                         # Check if the file details already exist in the JSON data
                             if not any(entry['src'] == src and entry['defer'] == defer for entry in data['jsfiles']):
                                 
+                                
                                 data['jsfiles'].append({
                                     'src': src,
                                     'defer': defer
                                 })
                         elif extension == '.css':
                             if not any(entry['src'] == src for entry in data['cssfiles']):
+                                
                                 data['cssfiles'].append({
                                     'src': src,
                                     'defer': defer
@@ -74,4 +92,5 @@ class Command(BaseCommand):
                         json_file.seek(0)
                         json.dump(data, json_file, indent=4)
                         json_file.truncate()
-                 
+    
+    

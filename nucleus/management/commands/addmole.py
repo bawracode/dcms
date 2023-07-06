@@ -8,18 +8,31 @@ from django.conf import settings
 Json_list = []
 class Command(TemplateCommand):
     help = "My custom startapp command."
-    
+
+
     def handle(self, *args, **options):
         app_name = options['name']
+        print(options)
 
         # root directory
         base_directory = settings.BASE_DIR
 
         # make dirs for app
-        target = os.path.join(base_directory, 'molecules' , app_name)
-        # if app_name satarts with cms_ then it will create app in cms folder
-        if app_name.startswith('cms_'):
+        choice = input('''1 for molecules app
+2 for nucles app
+3 for cms app\n''')
+        if choice == '1':
+            target = os.path.join(base_directory, 'molecules' , app_name)
+        elif choice == '2':
+            target = os.path.join(base_directory, 'nucleus' , app_name)
+        elif choice == '3':
             target = os.path.join(base_directory,'molecules', 'cms' , app_name)
+        else:
+            print('Wrong choice')
+            return
+        # if app_name satarts with cms_ then it will create app in cms folder
+        # if app_name.startswith('cms_'):
+        #     target = os.path.join(base_directory,'molecules', 'cms' , app_name)
 
         # if app already present then it will not create
         if os.path.exists(target):
