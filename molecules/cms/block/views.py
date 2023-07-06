@@ -44,7 +44,6 @@ def index(request,slug_url):
     block_collection = find_block_ids(block.content)
 
     activate('fr')
-    activate('es')
 
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})

@@ -125,7 +125,7 @@
                 "fields": [
                     {
                         "label": "Last Schedule Generated",
-                        "key": "test_settting_ 1_cron_configuration_last_schedule_generated",
+                        "key": "test_settting_1_cron_configuration_last_schedule_generated",
                         "info": "It registers when the last cron schedule was generated",
                         "order_number": "9999",
                         "type": "varchar",
