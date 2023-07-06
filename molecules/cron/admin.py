@@ -19,7 +19,7 @@ class CronJobForm(forms.ModelForm):
 class CronJobAdmin(admin.ModelAdmin):
     form = CronJobForm
     list_display = ("name","time_expression","display_status","script_path")
-    # change_list_template = "admin/cron/cronjob_change_list.html"
+
     class Media:
         js = ('js/admin/cron/script.js',)
 
