@@ -1,11 +1,13 @@
 {
-    "api": "active",
+    "lenguage": "active",
+    "test1": "active",
     "app_config": "active",
-    "cms.block": "active",
+    "cms.jash2": "active",
     "cms.cms_logs": "active",
     "cms.pages": "active",
-    "cron": "active",
-    "test1": "active",
+    "cms.block": "active",
+    "api": "active",
+    "test3": "active",
     "test2": "active",
-    "test3": "active"
+    "cron": "active"
 }

@@ -51,10 +51,12 @@ class Command(TemplateCommand):
         apps_file_path = os.path.join(target, 'apps.py')
         with open(apps_file_path, 'r') as apps_file:
             lines = apps_file.readlines()
-        if target.endswith('cms'):
-            lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "cms.{app_name}"')
-        else:
+        if choice == '2':
+            lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "nucleus.{app_name}"')
+        if choice == '1':
             lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "molecules.{app_name}"')
+        if choice == '3':
+            lines[-1] = lines[-1].replace(f'name = "{app_name}"',f'name = "molecules.cms.{app_name}"')
         
         with open(apps_file_path, 'w') as apps_file:
             apps_file.writelines(lines)

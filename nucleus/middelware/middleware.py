@@ -13,3 +13,33 @@ class RequestMiddleware:
 
 def get_current_request():
     return getattr(_thread_locals, 'request', None)
+
+
+
+
+# middleware.py
+from molecules.lenguage.models import Profile
+from django.utils import translation
+
+class AdminLanguageMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        print("AdminLanguageMiddleware")
+        if request.user.is_authenticated:
+            # chech if table is empty then set lenguage to english
+            if Profile.objects.count() == 0:
+                profile = Profile.objects.create(user=request.user, language='en')
+                profile.save()
+            profile = Profile.objects.get(user=request.user)
+            language = profile.language
+
+            translation.activate(language)
+        request.LANGUAGE_CODE = translation.get_language()
+
+        
+        return self.get_response(request)
+
+
+
