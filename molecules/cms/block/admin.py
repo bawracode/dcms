@@ -4,17 +4,18 @@ from django import forms
 from app import custom_filter
 from nucleus.controller.main_controller import ColumnController
 from app import base_admin
+
 columns_in_use=[
-    {"column_name":"id","default":True,"sort_order":10,"filter":None},
-    {"column_name":"title","default":False,"sort_order":20,"filter":None},
-    {"column_name":"content","default":False,"sort_order":30,"filter":None},
+    {"column_name":"id","visible":True,"sort_order":10,"filter":None},
+    {"column_name":"title","visible":False,"sort_order":20,"filter":None},
+    {"column_name":"content","visible":False,"sort_order":30,"filter":None},
     
-    {"column_name":"slug","default":True,"sort_order":20,"filter":custom_filter.TextInputFilter},
-    {"column_name":"status","default":True,"sort_order":30,"filter":custom_filter.TextDropDownFilter},
-    {"column_name":"block_status","default":True,"sort_order":40,"filter":custom_filter.TextDropDownFilter},
-    {"column_name":"created_at","default":True,"sort_order":50,"filter":None},
-    {"column_name":"updated_at","default":True,"sort_order":60,"filter":None},
-    {"column_name":"formatted_full_url","default":None,"sort_order":70,"filter":None},
+    {"column_name":"slug","visible":True,"sort_order":20,"filter":custom_filter.TextInputFilter},
+    {"column_name":"status","visible":True,"sort_order":30,"filter":custom_filter.TextDropDownFilter},
+    {"column_name":"block_status","visible":True,"sort_order":40,"filter":custom_filter.TextDropDownFilter},
+    {"column_name":"created_at","visible":True,"sort_order":50,"filter":None},
+    {"column_name":"updated_at","visible":True,"sort_order":60,"filter":None},
+    {"column_name":"formatted_full_url","visible":None,"sort_order":70,"filter":None},
 ]
 class BlocksForm(forms.ModelForm):
     content = forms.CharField(
