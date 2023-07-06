@@ -1,6 +1,6 @@
 {
     "app_name": "test1",
-    "path": "/cms/molecules/test1/config.json",
+    "path": "/cms/nucleus/users/config.json",
     "status": "active",
     "jsfiles": [],
     "cssfiles": []

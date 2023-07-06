@@ -13,7 +13,7 @@ class ColumnController:
 
     def get_list_display(self):
         list_columns=('action',)
-        list_columns+=tuple(item["column_name"] for item in self.column_dict if item.get("default", False))
+        list_columns+=tuple(item["column_name"] for item in self.column_dict if item.get("visible", False))
         return list_columns
     def get_list_filter(self):
         desired_filters = tuple((item["column_name"], item["filter"]) for item in self.column_dict if item["filter"] is not None)

@@ -2,8 +2,10 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.http.request import HttpRequest
 from django.conf import settings
-
+import inspect
 class BaseModelAdmin(admin.ModelAdmin):
+    model_path = inspect.getfile(inspect.currentframe())
+    print(model_path)
     def action(self, obj):
         return mark_safe(f'''
                          <a href="{obj.id}/change/"><img src="/static/admin/img/icon-changelink.svg" alt="True"></a> \t\t

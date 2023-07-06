@@ -7,6 +7,8 @@ from django.forms import ModelForm
 from django import forms
 from django.conf import settings
 import os
+from django.contrib import admin
+from django_cron.models import CronJobLog
 from django.utils.html import format_html
 
 from django_toggle_switch_widget.widgets import DjangoToggleSwitchWidget
@@ -60,3 +62,10 @@ class SystemConfigAdmin(admin.ModelAdmin):
 
     render_toggle_switch.short_description = 'Toggle Switch'
 
+
+
+# class CronJobLogAdmin(admin.ModelAdmin):
+#     list_display = ('code', 'is_success', 'start_time', 'end_time')
+
+# admin.site.register(CronJobLog, CronJobLogAdmin)
+ 
