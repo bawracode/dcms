@@ -23,7 +23,7 @@ class Command(BaseCommand):
                                 with open(os.path.join(root, file), 'r+') as json_file:
                                     data = json.load(json_file)
                                     path = os.path.join(root, file)
-                                    path = path.split(os.path.basename(Path(os.path.basename(file)).resolve().parent.parent))[1]
+                                    path = path.split(os.path.basename(Path(os.path.basename(file)).resolve().parent.parent))[-1]
                                     data['path'] = path
                                     json_file.seek(0)
                                     json.dump(data, json_file, indent=4)
@@ -59,40 +59,41 @@ class Command(BaseCommand):
                     module_name = os.path.basename(root)
                     file_path = os.path.join(root, file)
                     json_file_path = os.path.join(molecules_folder,module_name, 'config.json')
-                    with open(json_file_path, 'r+') as json_file:
-                        data = json.load(json_file)
-                        src = os.path.join(app_path, file)
-                        defer = True
-                    
-                        def get_file_extension(file_path):
-                            _, extension = os.path.splitext(file_path)
-                            return extension
-
-                        # Example usage
-                        file_path = src
+                    if os.path.exists(json_file_path):
+                        with open(json_file_path, 'r+') as json_file:
+                            data = json.load(json_file)
+                            src = os.path.join(app_path, file)
+                            defer = True
                         
-                        extension = get_file_extension(file_path)
-                        
-                        if extension == '.js':
-                        # Check if the file details already exist in the JSON data
-                            if not any(entry['src'] == src.split('cms')[1] and entry['defer'] == defer for entry in data['jsfiles']):
-                                
-                                
-                                data['jsfiles'].append({
-                                    'src': src.split('cms')[1],
-                                    'defer': defer
-                                })
-                        elif extension == '.css':
-                            if not any(entry['src'] == src.split('cms')[1] for entry in data['cssfiles']):
-                                
-                                data['cssfiles'].append({
-                                    'src': src.split('cms')[1],
-                                    'defer': defer
+                            def get_file_extension(file_path):
+                                _, extension = os.path.splitext(file_path)
+                                return extension
 
-                                })
+                            # Example usage
+                            file_path = src
+                            src = src.split(os.path.basename(settings.BASE_DIR))[-1]
+                            extension = get_file_extension(file_path)
+                            
+                            if extension == '.js':
+                            # Check if the file details already exist in the JSON data
+                                if not any(entry['src'] == src and entry['defer'] == defer for entry in data['jsfiles']):
+                                    
+                                    
+                                    data['jsfiles'].append({
+                                        'src': src,
+                                        'defer': defer
+                                    })
+                            elif extension == '.css':
+                                if not any(entry['src'] == src for entry in data['cssfiles']):
+                                    
+                                    data['cssfiles'].append({
+                                        'src': src,
+                                        'defer': defer
 
-                        json_file.seek(0)
-                        json.dump(data, json_file, indent=4)
-                        json_file.truncate()
-    
-    
+                                    })
+
+                            json_file.seek(0)
+                            json.dump(data, json_file, indent=4)
+                            json_file.truncate()
+        
+        

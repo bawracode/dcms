@@ -64,7 +64,7 @@ installed_apps = [
     'django_cron',
 ]
 CRON_CLASSES = [
-    # 'molecules.api.cron.ClearAPILogsCronJob',
+    'molecules.api.cron.ClearAPILogsCronJob',
 ]
 
 
