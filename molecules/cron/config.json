@@ -1,6 +1,6 @@
 {
     "app_name": "cms_cron",
-    "path": "/dcms/molecules/cron/config.json",
+    "path": "/cms/molecules/cron/config.json",
     "status": "active",
     "jsfiles": [
         {

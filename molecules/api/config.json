@@ -1,6 +1,6 @@
 {
     "app_name": "api",
-    "path": "/dcms/molecules/api/config.json",
+    "path": "/cms/molecules/api/config.json",
     "status": "active",
     "jsfiles": [],
     "cssfiles": []

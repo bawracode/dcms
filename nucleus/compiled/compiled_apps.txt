@@ -3,7 +3,7 @@ molecules.app_config
 molecules.test2
 molecules.cron
 molecules.test1
-molecules.lenguage
+molecules.language
 molecules.cms.cms_logs
 molecules.cms.block
 molecules.cms.pages

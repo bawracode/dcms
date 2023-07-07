@@ -1,6 +1,6 @@
 {
     "app_name": "pages",
-    "path": "/dcms/molecules/cms/pages/config.json",
+    "path": "/cms/molecules/cms/pages/config.json",
     "status": "active",
     "jsfiles": []
 }
