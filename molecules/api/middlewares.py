@@ -12,7 +12,7 @@ class APILogMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        print(request.path.split('/')[2:-1],"request.path")  
+        
         module_name = '_'.join(request.path.split('/')[2:-1])
         random_number = random.randint(1, 1000)
 

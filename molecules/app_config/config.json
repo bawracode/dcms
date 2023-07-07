@@ -1,16 +1,24 @@
 {
     "app_name": "app_config",
-    "path": "/Users/jashkakadiya/Downloads/cms/molecules/app_config/config.json",
+    "path": "C:\\Users\\91940\\Documents\\Yk project\\dcms\\dcms\\molecules\\app_config\\config.json",
     "status": "active",
     "jsfiles": [
         {
             "src": "/Users/jashkakadiya/Downloads/cms/static/js/admin/nucleus/app_config/script.js",
+            "defer": true
+        },
+        {
+            "src": "C:\\Users\\91940\\Documents\\Yk project\\dcms\\dcms\\static\\js\\admin\\nucleus\\app_config\\script.js",
             "defer": true
         }
     ],
     "cssfiles": [
         {
             "src": "/Users/jashkakadiya/Downloads/cms/static/css/admin/nucleus/app_config/style.css",
+            "defer": true
+        },
+        {
+            "src": "C:\\Users\\91940\\Documents\\Yk project\\dcms\\dcms\\static\\css\\admin\\nucleus\\app_config\\style.css",
             "defer": true
         }
     ]

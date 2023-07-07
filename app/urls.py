@@ -25,9 +25,10 @@ base_directory = Path(__file__).resolve().parent.parent
 
 urlpatterns = [
     path(_('admin/'), admin.site.urls),
+    path('nucleus/',include('nucleus.users.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
-    
+     
 
 
 for module in active_modules:
