@@ -36,6 +36,7 @@ class APILogMiddleware:
             return False
 
     def log_api_call(self, request, module_name, random_number):
+        
         base_dir = settings.BASE_DIR
         log_directory = os.path.join(base_dir, 'data','logs') 
         current_date = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -47,9 +48,10 @@ class APILogMiddleware:
         with open(log_file_path, 'a') as file:
             file.write(log_message + '\n')
 
-        # logger.info(log_message) # Log to console
+        logger.info(log_message) # Log to console
 
     def log_api_response(self, request, response, module_name, random_number):
+            print("log_api_response,,,,,,,,,")
             base_dir = settings.BASE_DIR
             log_directory = os.path.join(base_dir, 'data','logs') 
             current_date = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -61,4 +63,4 @@ class APILogMiddleware:
             with open(log_file_path, 'a') as file:
                 file.write(log_message + '\n')
 
-            # logger.info(log_message) 
+            logger.info(log_message) 

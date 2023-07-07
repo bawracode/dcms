@@ -11,6 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         base_dir = settings.BASE_DIR
+        
 
         # update paths in config.json files according system
         for root, dirs, files in os.walk(base_dir):
@@ -21,8 +22,8 @@ class Command(BaseCommand):
                             if file == 'config.json':
                                 with open(os.path.join(root, file), 'r+') as json_file:
                                     data = json.load(json_file)
-                                    print(data)
                                     path = os.path.join(root, file)
+                                    path = path.split(os.path.basename(Path(os.path.basename(file)).resolve().parent.parent))[1]
                                     data['path'] = path
                                     json_file.seek(0)
                                     json.dump(data, json_file, indent=4)
@@ -69,22 +70,23 @@ class Command(BaseCommand):
 
                         # Example usage
                         file_path = src
+                        
                         extension = get_file_extension(file_path)
                         
                         if extension == '.js':
                         # Check if the file details already exist in the JSON data
-                            if not any(entry['src'] == src and entry['defer'] == defer for entry in data['jsfiles']):
+                            if not any(entry['src'] == src.split('cms')[1] and entry['defer'] == defer for entry in data['jsfiles']):
                                 
                                 
                                 data['jsfiles'].append({
-                                    'src': src,
+                                    'src': src.split('cms')[1],
                                     'defer': defer
                                 })
                         elif extension == '.css':
-                            if not any(entry['src'] == src for entry in data['cssfiles']):
+                            if not any(entry['src'] == src.split('cms')[1] for entry in data['cssfiles']):
                                 
                                 data['cssfiles'].append({
-                                    'src': src,
+                                    'src': src.split('cms')[1],
                                     'defer': defer
 
                                 })

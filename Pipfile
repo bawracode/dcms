@@ -15,8 +15,10 @@ croniter = "*"
 django-bootstrap5 = "*"
 django-toggle-switch-widget = "*"
 django-cron = "*"
+django-rosetta = "*"
+numpy = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "3.10"

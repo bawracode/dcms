@@ -5,8 +5,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Blocks
 from molecules.cms.pages.models import CustomPage
 from django.template import Template, RequestContext
+
+from django.utils.translation import activate
 # render string to html
 from molecules.cms.cms_logs.models import *
+
 
 
 def find_block_ids(string):
@@ -28,7 +31,7 @@ def find_block_ids(string):
             except ObjectDoesNotExist:
                 pass
 
-        return result_string
+        return result_string            
     else:
         return string
 
@@ -40,6 +43,7 @@ def index(request,slug_url):
 
     block_collection = find_block_ids(block.content)
 
+    activate('fr')
 
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})

@@ -20,15 +20,15 @@ msgstr ""
 
 #: app/settings.py:207
 msgid "English"
-msgstr "English"
+msgstr ""
 
 #: app/settings.py:208
 msgid "French"
-msgstr "French"
+msgstr ""
 
 #: app/settings.py:209
 msgid "Spanish"
-msgstr "Spanish"
+msgstr ""
 
 #: app/settings.py:210
 msgid "German"
@@ -44,21 +44,21 @@ msgstr ""
 
 #: molecules/cms/block/models.py:12 molecules/cms/pages/models.py:23
 msgid "title"
-msgstr "title"
+msgstr ""
 
 #: molecules/cms/block/models.py:13 molecules/cms/pages/models.py:24
 msgid "slug"
-msgstr "slug"
+msgstr ""
 
 #: molecules/cms/block/models.py:29 molecules/cms/cms_logs/models.py:13
 #: molecules/cms/cms_logs/models.py:22 molecules/cms/pages/models.py:33
 msgid "creation date"
-msgstr "creation date"
+msgstr ""
 
 #: molecules/cms/block/models.py:30 molecules/cms/cms_logs/models.py:14
 #: molecules/cms/cms_logs/models.py:23 molecules/cms/pages/models.py:34
 msgid "updation date"
-msgstr "updation date"
+msgstr ""
 
 #: molecules/cms/cms_logs/models.py:10 molecules/cms/cms_logs/models.py:19
 msgid "user"
