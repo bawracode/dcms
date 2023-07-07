@@ -13,7 +13,7 @@ class PageLog(models.Model):
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):
-        return f"{self.user} - {self.action} - {self.created_at}"
+        return f"{self.user} - {self.actions} - {self.created_at}"
 
 class BlockLog(models.Model):
     user = models.CharField(_("user"), max_length=255)
@@ -22,4 +22,4 @@ class BlockLog(models.Model):
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):
-        return f"{self.user} - {self.action} - {self.created_at}"
+        return f"{self.user} - {self.actions} - {self.created_at}"

@@ -32,7 +32,7 @@ function savePopupModel(data,token,path_model){
     
     // Send the AJAX request
     $.ajax({
-        url: '/nucleus/save_prefrences/',
+        url: '/users/save_prefrences/',
         method: 'POST',
         data: {
             updatedPrefrences: JSON.stringify(result_list),

@@ -39,7 +39,7 @@ class Blocks(models.Model):
         if request and request.user.is_staff:
             # Create a Blocklog instance when the current model is created by an admin
             admin_username = request.user.username
-            BlockLog.objects.create(user=admin_username, action=f"Block {self.slug} created", ip_address=request.META.get('REMOTE_ADDR'))
+            BlockLog.objects.create(user=admin_username, actions=f"Block {self.slug} created", ip_address=request.META.get('REMOTE_ADDR'))
 
         super().save(*args, **kwargs)
     def formatted_full_url(self):
