@@ -36,3 +36,11 @@ urlpatterns = [
  path("", include(routers.urls)),
  path('toggle_ajax/', toggle_switch_ajax, name='toggle_switch_ajax'),
 ]
+
+api_names = []
+for router in routers.registry:
+    viewset = router[0]
+    api_names.append(viewset.lower().replace('viewset', ''))
+
+for api_name in api_names:
+        SystemConfig.objects.get_or_create(api_name=api_name) 
