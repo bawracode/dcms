@@ -25,23 +25,30 @@ def compile_apps(folder_name, file_path,BASE_DIR):
     base_directory = settings.BASE_DIR
 
     molecules_directory = os.path.join(base_directory, 'molecules')
-
+    molecules_directory = os.path.join(base_directory, 'nucleus')
+    folder_name = ['molecules','nucleus']
     modul_list = []
+    for folder in folder_name:
+        molecules_directory = os.path.join(base_directory,folder)
+    
 # append_modules function is used to append the modules to the list
-    def append_modules(directory, modul_list):
-        for foldername in os.listdir(directory):
-            folder_path = os.path.join(directory, foldername)
-            config_path = os.path.join(folder_path, 'config.json')
+        def append_modules(directory, modul_list):
+            for foldername in os.listdir(directory):
+                folder_path = os.path.join(directory, foldername)
+                config_path = os.path.join(folder_path, 'config.json')
 
-            if os.path.isfile(config_path):
-                modul_list.append(foldername)
-                modul_list.append('active')
-            elif os.path.isdir(folder_path):
-                for app in os.listdir(folder_path):
-                    if os.path.isfile(os.path.join(folder_path, app, 'config.json')):
-                        modul_list.append(foldername + '.' + app)
-                        modul_list.append('active')
-    append_modules(molecules_directory, modul_list)
+                if os.path.isfile(config_path):
+
+                    # print(folder,foldername)
+                    modul_list.append(folder+'.'+foldername)
+                    modul_list.append('active')
+                elif os.path.isdir(folder_path):
+                    for app in os.listdir(folder_path):
+                        if os.path.isfile(os.path.join(folder_path, app, 'config.json')):
+                            modul_list.append(folder+'.'+foldername + '.' + app)
+                            modul_list.append('active')
+        append_modules(molecules_directory, modul_list)
+    print(modul_list)
 # from list to mainConfig.json
     dictionary = {}
     for i in range(0, len(modul_list), 2):

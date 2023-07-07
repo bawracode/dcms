@@ -5,7 +5,7 @@ from django.conf import settings
 import inspect
 class BaseModelAdmin(admin.ModelAdmin):
     model_path = inspect.getfile(inspect.currentframe())
-    print(model_path)
+    # print(model_path)
     def action(self, obj):
         return mark_safe(f'''
                          <a href="{obj.id}/change/"><img src="/static/admin/img/icon-changelink.svg" alt="True"></a> \t\t

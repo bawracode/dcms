@@ -65,7 +65,7 @@ installed_apps = [
     'rosetta',
 ]
 CRON_CLASSES = [
-    'molecules.api.cron.ClearAPILogsCronJob',
+    # 'molecules.api.cron.ClearAPILogsCronJob',
 ]
 
 

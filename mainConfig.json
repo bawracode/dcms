@@ -1,13 +1,13 @@
 {
-    "lenguage": "active",
-    "test1": "active",
-    "app_config": "active",
-    "cms.jash2": "active",
-    "cms.cms_logs": "active",
-    "cms.pages": "active",
-    "cms.block": "active",
-    "api": "active",
-    "test3": "active",
-    "test2": "active",
-    "cron": "active"
+    "molecules.lenguage": "active",
+    "molecules.test1": "active",
+    "molecules.app_config": "active",
+    "molecules.cms.cms_logs": "active",
+    "molecules.cms.pages": "active",
+    "molecules.cms.block": "active",
+    "molecules.api": "active",
+    "molecules.test3": "active",
+    "molecules.test2": "active",
+    "molecules.cron": "active",
+    "nucleus.users": "active"
 }
