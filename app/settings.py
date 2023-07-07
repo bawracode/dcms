@@ -62,7 +62,6 @@ installed_apps = [
     'molecules',
     'nucleus',
     'django_cron',
-    'rosetta',
 ]
 CRON_CLASSES = [
     # 'molecules.api.cron.ClearAPILogsCronJob',
