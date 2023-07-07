@@ -33,8 +33,8 @@ urlpatterns = [
     path("api-token-auth/", obtain_auth_token, name="api_token_auth"),
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
- path("", include(routers.urls)),
- path('toggle_ajax/', toggle_switch_ajax, name='toggle_switch_ajax'),
+    path("", include(routers.urls)),
+    path('toggle_ajax/', toggle_switch_ajax, name='toggle_switch_ajax'),
 ]
 
 api_names = []

@@ -32,8 +32,13 @@ class AdminLanguageMiddleware:
             if Profile.objects.count() == 0:
                 profile = Profile.objects.create(user=request.user, language='en')
                 profile.save()
+            # create profile if not exist
+            if not Profile.objects.filter(user=request.user).exists():
+                profile = Profile.objects.create(user=request.user, language='en')
+                profile.save()
             profile = Profile.objects.get(user=request.user)
             language = profile.language
+           
 
             translation.activate(language)
         request.LANGUAGE_CODE = translation.get_language()
