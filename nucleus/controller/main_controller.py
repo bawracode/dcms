@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+from app import custom_filter
 class Compilation:
     def __init__(self,file_name):
         self.compiled_dir = os.path.join( Path(__file__).resolve().parent.parent ,'compiled')
@@ -16,6 +16,6 @@ class ColumnController:
         list_columns+=tuple(item["column_name"] for item in self.column_dict if item.get("visible", False))
         return list_columns
     def get_list_filter(self):
-        desired_filters = tuple((item["column_name"], item["filter"]) for item in self.column_dict if item["filter"] is not None)
+        desired_filters = tuple((item["column_name"],eval(item["filter"])) for item in self.column_dict if item["filter"] is not None)
         return desired_filters
     

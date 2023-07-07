@@ -6,6 +6,10 @@
         {
             "src": "/static/js/admin/cron/script.js",
             "defer": true
+        },
+        {
+            "src": "C:\\Users\\91940\\Documents\\Yk project\\dcms\\dcms\\static\\js\\admin\\cron\\script.js",
+            "defer": true
         }
     ],
     "cssfiles": []

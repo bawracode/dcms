@@ -23,9 +23,10 @@ base_directory = settings.BASE_DIR
 
 urlpatterns = [
     path(_('admin/'), admin.site.urls),
+    path('nucleus/',include('nucleus.users.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
-    
+     
 
 
 for module in active_modules:
