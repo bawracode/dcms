@@ -21,7 +21,6 @@ class BaseModelAdmin(admin.ModelAdmin):
         if prefrence_found:
            output=prefrence_found.json_data
            output=sorted(output, key=lambda x: x["sort_order"])
-           print(output)
            columns_mapper=ColumnController(output)
            self.list_display=columns_mapper.get_list_display()
            self.list_filter=columns_mapper.get_list_filter()

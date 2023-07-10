@@ -4,7 +4,6 @@ import threading
 _thread_locals = threading.local()
 
 class RequestMiddleware:
-    print('RequestMiddleware')
     def __init__(self, get_response):
         self.get_response = get_response
 
