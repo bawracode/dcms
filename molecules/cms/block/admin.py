@@ -22,6 +22,6 @@ class BlocksForm(forms.ModelForm):
 class BlockAdmin(base_admin.BaseModelAdmin):
     form = BlocksForm
     prepopulated_fields = {'slug': ('title',)}
-    list_per_page=2
-    # list_filter=("slug",)
-    # list_display = ['id','slug']
+    
+    
+    

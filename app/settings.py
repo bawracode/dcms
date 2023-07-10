@@ -45,10 +45,14 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = []
 
 
+LIST_PER_CHOICES = [10, 20, 50, 100]
+
+
+
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

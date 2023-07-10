@@ -18,7 +18,7 @@ class ColumnController:
         list_columns+=tuple(item["column_name"] for item in self.column_dict if item.get("visible", False))
         return list_columns
     def get_list_filter(self):
-# print(self.model)
+
         model_fields = self.model._meta.get_fields()
         filter=()
         for field in model_fields:
@@ -38,6 +38,6 @@ class ColumnController:
 
 
         
-        print(filter)
+        
         return filter
     
