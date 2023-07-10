@@ -16,27 +16,29 @@ class BaseModelAdmin(admin.ModelAdmin):
         
         model = self.model
         path_model=str(self).replace('.','_')
-        
+        columns_mapper=ColumnController()
         prefrence_found=UserPrefrenceModel.objects.filter(user=user,model_path=path_model).first()
         if prefrence_found:
            output=prefrence_found.json_data
            output=sorted(output, key=lambda x: x["sort_order"])
-           print(output)
-           columns_mapper=ColumnController(output)
+        #    print(output)
+           columns_mapper.set_dict(output)
            self.list_display=columns_mapper.get_list_display()
-           self.list_filter=columns_mapper.get_list_filter()
            
+        
         else:
             #default list display list for admin
             column_list = [field.name for field in model._meta.get_fields()]
             self.list_display=['action']+column_list
             #sortable views list for admin
-            template = {"filter": None, "visible": True, "sort_order": None, "column_name": None}
+            template = {"visible": True, "sort_order": None, "column_name": None}
             
             output = [template.copy() for _ in range(len(column_list))]
             for i, column_name in enumerate(column_list):
                 output[i]["column_name"] = column_name
-            
+        
+        columns_mapper.set_model(model)
+        self.list_filter=columns_mapper.get_list_filter()
         return output,path_model
     def changelist_view(self, request, extra_context=None):
         
