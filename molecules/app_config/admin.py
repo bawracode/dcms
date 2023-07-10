@@ -27,7 +27,7 @@ class app_configAdmin(admin.ModelAdmin):
         for i in json_data:
             result.append(i.get('section'))
 
-        print(result)
+        
         
 
         # Pass JSON data to template context

@@ -48,7 +48,6 @@ def compile_apps(folder_name, file_path,BASE_DIR):
                             modul_list.append(folder+'.'+foldername + '.' + app)
                             modul_list.append('active')
         append_modules(molecules_directory, modul_list)
-    print(modul_list)
 # from list to mainConfig.json
     dictionary = {}
     for i in range(0, len(modul_list), 2):

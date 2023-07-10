@@ -20,7 +20,6 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response({'message': 'API call successful'})
     def get_queryset(self):
         queryset = User.objects.all()
-        print(self.request.path.split('/')[-3:-1],"self.request")
         name = self.request.query_params.get('name', None)
         if name is not None:
             queryset = queryset.filter(name=name)
@@ -48,7 +47,6 @@ def toggle_switch_ajax(request):
         id = request.POST.get('id')
     
         obj = SystemConfig.objects.get(id=id)
-        print(obj.config_value,"-database value")
         # print("user value-",value)
         obj.config_value = not obj.config_value
         obj.save()

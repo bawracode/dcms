@@ -76,7 +76,7 @@ class TextInputFilter(FieldListFilter):
         return [self.field_path]
 
     def choices(self, changelist):
-        print(self.value())
+        
         yield {
             'selected': self.value(),
             'query_string': changelist.get_query_string({self.field: None}, []),

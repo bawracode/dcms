@@ -51,13 +51,13 @@ def return_sub_section(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         section_name = data['section_name']
-        print(section_name)
+       
 
         for i in json_data:
             if i.get('section') == section_name:
                 sub_section = i.get('sub')
                 break
-        print(sub_section)
+        
         response_data = {
             'sub_section': sub_section,
             'status': 'success'
@@ -102,7 +102,7 @@ def save_value(request):
     if request.method == "POST":
         data = json.loads(request.body)
         form_field = data['form_field']
-        print(form_field)
+       
         for i in form_field:
             key = i
             value = form_field[i]
