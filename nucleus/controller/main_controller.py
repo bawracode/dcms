@@ -27,15 +27,14 @@ class ColumnController:
             choices = getattr(field, 'choices', None)
             if choices:
                 filter += ((field_name, custom_filter.TextDropDownFilter),)
-                print(f"Field Name: {field_name}, Field Type: {field_type}, Choices: {choices}")
+                
             else:
                 if field_type in ["CharField","SlugField","TextField"]:
                     filter += ((field_name, custom_filter.TextInputFilter),)
                 if field_type=='DateTimeField':
                     filter+=((field_name,admin.DateFieldListFilter),)
                     
-                print(f"Field Name: {field_name}, Field Type: {field_type}")
-
+                
 
         
         
