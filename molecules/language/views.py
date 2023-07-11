@@ -97,6 +97,6 @@ def po_file_view(request):
             po.save_as_mofile(os.path.join(base_dir, 'locale', language, 'LC_MESSAGES', 'django.mo'))
             po.save()
             os.system(f'python manage.py makemessages -l {language}')
-            return HttpResponse('File saved successfully')
+            
     return render(request, 'admin/po_file_upload.html')
 

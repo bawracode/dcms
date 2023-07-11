@@ -23,7 +23,7 @@ active_modules = get_active_modules()
 base_directory = settings.BASE_DIR
 
 urlpatterns = [
-    path(_('admin/'), admin.site.urls),
+    path('admin/', admin.site.urls),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
