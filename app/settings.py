@@ -47,14 +47,15 @@ ALLOWED_HOSTS = []
 
 # Application definition
 installed_apps = [
-    "adminlte3",
-    "adminlte3_theme",
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'eav',
     'django_toggle_switch_widget',
     'rest_framework',
     'rest_framework.authtoken',
