@@ -45,6 +45,10 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = []
 
 
+LIST_PER_CHOICES = [10, 20, 50, 100]
+
+
+
 # Application definition
 installed_apps = [
     # "adminlte3",
