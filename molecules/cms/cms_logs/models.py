@@ -8,8 +8,8 @@ from django.utils import timezone
 
 class PageLog(models.Model):
     user = models.CharField(_("user"), max_length=255)
-    actions = models.CharField(max_length=255)
-    ip_address = models.GenericIPAddressField()
+    actions = models.CharField(_("action"), max_length=255)
+    ip_address = models.GenericIPAddressField(_("ip address"))
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):
@@ -17,8 +17,8 @@ class PageLog(models.Model):
 
 class BlockLog(models.Model):
     user = models.CharField(_("user"), max_length=255)
-    actions = models.CharField(max_length=255)
-    ip_address = models.GenericIPAddressField()
+    actions = models.CharField(_("action") ,max_length=255)
+    ip_address = models.GenericIPAddressField(_("ip address"))
     created_at = models.DateTimeField(_("creation date"), editable=False, default=timezone.now)
     updated_at = models.DateTimeField(_("updation date"), editable=False, default=timezone.now)
     def __str__(self):

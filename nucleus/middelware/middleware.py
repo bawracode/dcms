@@ -1,5 +1,7 @@
 
 import threading
+import os
+from django.conf import settings
 
 _thread_locals = threading.local()
 
@@ -40,6 +42,10 @@ class AdminLanguageMiddleware:
            
 
             translation.activate(language)
+            
+            print("python manage.py makemessages for ",language)
+            os.system("python manage.py makemessages -l {}".format(language))
+            
         request.LANGUAGE_CODE = translation.get_language()
 
         
