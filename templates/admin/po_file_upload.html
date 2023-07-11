@@ -1,0 +1,6 @@
+<!-- po_file_upload.html -->
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="po_file">
+  <button type="submit">Upload</button>
+</form>

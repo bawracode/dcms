@@ -35,9 +35,7 @@ class BaseModelAdmin(admin.ModelAdmin):
         if prefrence_found:
            output=prefrence_found.json_data
            output=sorted(output, key=lambda x: x["sort_order"])
-        
            columns_mapper.set_dict(output)
-           
            self.list_display=columns_mapper.get_list_display()
            
         

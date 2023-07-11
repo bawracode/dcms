@@ -11,15 +11,20 @@ class Blocks(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(_("title"), max_length=255)
     slug = models.SlugField(_("slug"), max_length=255, db_index=True, unique=False)
-    content = models.TextField()
-    status = models.IntegerField(default = 1,
+    content = models.TextField(_('content'), blank=True, null=True)
+    status = models.IntegerField(
+        _("status"),
+        default = 1,
                                    blank = True,
                                     null = True,
                                     help_text ='1->Active, 0->Inactive', 
+                        
                                     choices =(
                                     (1, 'Active'), (0, 'Inactive')
                                     ))
-    block_status = models.IntegerField(default = 1,
+    block_status = models.IntegerField(
+        _("block_status"),
+        default = 1,
                                    blank = True,
                                     null = True,
                                     help_text ='1 - system_define, 0 - custom_define', 

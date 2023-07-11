@@ -1,0 +1,19 @@
+<!-- admin/po_file_editor.html -->
+<form method="post">
+  {% csrf_token %}
+  {% for entry in po %}
+    <p>
+      <input type="text" name="msgid_{{ entry.msgid }}" value="{{ entry.msgid }}">
+      <input type="text" name="msgstr_{{ entry.msgstr }}" value="{{ entry.msgstr }}">
+    </p>
+  {% endfor %}
+  <input type="hidden" name="save" value="1">
+    {% comment %} create drop down manue for lenguage {% endcomment %}
+    <select name="lenguage">
+      {% for lenguage in lenguages %}
+        <option value="{{ lenguage }}">{{ lenguage }}</option>
+      {% endfor %}
+    </select>
+  
+  <button type="submit">Save</button>
+</form>

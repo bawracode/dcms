@@ -48,7 +48,7 @@ def index(request,slug_url):
     template = Template(block_collection)
     context = RequestContext(request, {'user': request.user})
     rendered_template = template.render(context)
-    BlockLog.objects.create(user=request.user, action="block created", ip_address=request.META.get('REMOTE_ADDR'))
+    BlockLog.objects.create(user=request.user, actions="block created", ip_address=request.META.get('REMOTE_ADDR'))
 
     return HttpResponse(rendered_template)
 

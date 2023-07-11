@@ -22,7 +22,7 @@ class CustomPage(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(_("title"), max_length=255)
     slug = models.SlugField(_("slug"), max_length=255, db_index=True, unique=False)
-    content = models.TextField()
+    content = models.TextField(_('content'), blank=True, null=True)
     status = models.IntegerField(default = 1,
                                    blank = True,
                                     null = True,
