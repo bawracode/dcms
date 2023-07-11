@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2023-07-11 16:37+0530\n"
+=======
+"POT-Creation-Date: 2023-07-11 16:45+0530\n"
+>>>>>>> 65dbb91c7c143128f1c1143192716c832779a80c
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,11 +118,15 @@ msgstr " By %(filter_title)s "
 
 #: templates/admin/custom_text_input_filter.html:47
 msgid "Go"
+<<<<<<< HEAD
 msgstr "GoaS"
+=======
+msgstr "Go"
+>>>>>>> 65dbb91c7c143128f1c1143192716c832779a80c
 
 #: templates/admin/pagination.html:14
 msgid "Items per page:"
-msgstr ""
+msgstr "Items per page:"
 
 #: templates/admin/pagination.html:23
 msgid "Save"

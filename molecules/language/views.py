@@ -83,14 +83,19 @@ def po_file_view(request):
             language = request.POST.get('lenguage')
             print(language)
             po = polib.pofile(os.path.join(base_dir, 'locale', language, 'LC_MESSAGES', 'django.po'))
+            # print(po)
             for entry in po:
+                # print(entry.msgstr)
                 msgid = request.POST.get(f'msgid_{entry.msgid}')
                 msgstr = request.POST.get(f'msgstr_{entry.msgstr}')
-                if msgstr is None or msgstr == "":
+                if (msgstr is None or msgstr == "") or (entry.msgstr is None):
                     msgstr = msgid
-                    print(msgstr," is none")
+                    entry.msgstr = msgstr
+                    print(msgstr," is none", msgid)
                 entry.msgid = msgid
                 entry.msgstr = msgstr
+                # print(entry.msgid)
+                print(entry.msgstr)
 
             entries = po.translated_entries()
             entries.sort(key=lambda o: (o.msgid_with_context or '').encode('utf-8'))
