@@ -4,10 +4,10 @@
 <p class="paginator">
 {% if pagination_required %}
 
-  <a href="#" class="button" id="previous-link">{% translate '<' %}</a>
+  <a href="#" class="button" id="previous-link"><</a>
   <input type="number" id="input_page_number" style="width:5%">
-  <a href="#" class="button" id="next-link">{% translate '>' %}</a>
-  <span>{% translate 'of' %} <span id="num_pages">{{ cl.paginator.num_pages }}</span></span>
+  <a href="#" class="button" id="next-link">></a>
+  <span>of <span id="num_pages">{{ cl.paginator.num_pages }}</span></span>
   
   
 {% endif %}
@@ -65,12 +65,20 @@
           }
         });
         const urlParams = new URLSearchParams(window.location.search);
+       
         const currentPage = parseInt(urlParams.get('p')) || 1;
-        if (currentPage>1){
-            previousLink.attr('href', '?p=' + (currentPage - 1));
+        const previousParams = urlParams.toString();
+        
+        urlParams.delete('p');
+
+        if (currentPage > 1) {
+          urlParams.set('p', currentPage - 1);
+          previousLink.attr('href', '?' + urlParams.toString());
         }
-        if (currentPage<{{cl.paginator.num_pages}}){
-        nextLink.attr('href', '?p=' + (currentPage + 1));
+
+        if (currentPage < {{ cl.paginator.num_pages }}) {
+          urlParams.set('p', currentPage + 1);
+          nextLink.attr('href', '?' + urlParams.toString() );
         }
         if(currentPage){
             input.val(currentPage);
@@ -78,12 +86,32 @@
 
 
         $('#list_per_page_select').on('change', function() {
-
-          const value = $(this).val();
           const url = new URL(window.location.href);
-          url.search = '';  // Clear all existing query parameters
+          const value = $(this).val();
+          console.log(url.pathname)
+          $.ajax({
+            url: url.pathname+"?list_per_page="+value,
+            method: "GET", // Use GET method
+            success: function(response) {
+              location.reload(true)
+            },
+            error: function(xhr, status, error) {
+              console.log("Endgame")
+            }
+          });
+
+          {% comment %} const value = $(this).val();
+
+          const url = new URL(window.location.href);
+          
+
+          if (url.searchParams.has('e')) {
+            url.searchParams.delete('e');
+          }
           url.searchParams.set('list_per_page', value);  // Add the desired query parameter
-          window.location.href = url.toString();
+          
+          
+          window.location.href = url.toString();  {% endcomment %}
 
          
           
