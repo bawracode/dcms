@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 16:09+0530\n"
+"POT-Creation-Date: 2023-07-11 16:37+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,21 +112,9 @@ msgstr "Toggle sorting"
 msgid " By %(filter_title)s "
 msgstr " By %(filter_title)s "
 
-#: templates/admin/custom_text_input_filter.html:30
+#: templates/admin/custom_text_input_filter.html:47
 msgid "Go"
 msgstr "GoaS"
-
-#: templates/admin/pagination.html:7
-msgid "<"
-msgstr ""
-
-#: templates/admin/pagination.html:9
-msgid ">"
-msgstr ""
-
-#: templates/admin/pagination.html:10
-msgid "of"
-msgstr ""
 
 #: templates/admin/pagination.html:14
 msgid "Items per page:"
