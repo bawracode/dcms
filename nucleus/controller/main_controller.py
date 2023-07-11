@@ -18,7 +18,7 @@ class ColumnController:
         list_columns+=tuple(item["column_name"] for item in self.column_dict if item.get("visible", False))
         return list_columns
     def get_list_filter(self):
-# print(self.model)
+
         model_fields = self.model._meta.get_fields()
         filter=()
         for field in model_fields:
@@ -27,17 +27,16 @@ class ColumnController:
             choices = getattr(field, 'choices', None)
             if choices:
                 filter += ((field_name, custom_filter.TextDropDownFilter),)
-                print(f"Field Name: {field_name}, Field Type: {field_type}, Choices: {choices}")
+                
             else:
                 if field_type in ["CharField","SlugField","TextField"]:
                     filter += ((field_name, custom_filter.TextInputFilter),)
                 if field_type=='DateTimeField':
                     filter+=((field_name,admin.DateFieldListFilter),)
                     
-                print(f"Field Name: {field_name}, Field Type: {field_type}")
-
+                
 
         
-        print(filter)
+        
         return filter
     

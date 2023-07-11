@@ -5,3 +5,4 @@ from .models import Profile
 @admin.register(Profile)
 class UserPrefrenceAdmin(admin.ModelAdmin):
     list_display = ('user', 'language')
+

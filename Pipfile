@@ -17,6 +17,7 @@ django-toggle-switch-widget = "*"
 django-cron = "*"
 django-rosetta = "*"
 numpy = "*"
+polib = "*"
 
 [dev-packages]
 

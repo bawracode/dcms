@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 15:34+0530\n"
+"POT-Creation-Date: 2023-07-11 15:37+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: app/settings.py:212
 msgid "English"
-msgstr "Anglaise"
+msgstr "English"
 
 #: app/settings.py:213
 msgid "French"
-msgstr "Français"
+msgstr "French"
 
 #: app/settings.py:214
 msgid "Spanish"
-msgstr "Espagnole"
+msgstr "Spanish"
 
 #: app/settings.py:215
 msgid "German"
@@ -36,15 +36,15 @@ msgstr "German"
 
 #: app/urls.py:26
 msgid "admin/"
-msgstr "admino/"
+msgstr "admin/"
 
 #: molecules/cms/block/models.py:12 molecules/cms/pages/models.py:23
 msgid "title"
-msgstr "titre"
+msgstr "title"
 
 #: molecules/cms/block/models.py:13 molecules/cms/pages/models.py:24
 msgid "slug"
-msgstr "limace"
+msgstr "slug"
 
 #: molecules/cms/block/models.py:14 molecules/cms/pages/models.py:25
 msgid "content"
@@ -61,12 +61,12 @@ msgstr "block_status"
 #: molecules/cms/block/models.py:34 molecules/cms/cms_logs/models.py:13
 #: molecules/cms/cms_logs/models.py:22 molecules/cms/pages/models.py:33
 msgid "creation date"
-msgstr "date de création"
+msgstr "creation date"
 
 #: molecules/cms/block/models.py:35 molecules/cms/cms_logs/models.py:14
 #: molecules/cms/cms_logs/models.py:23 molecules/cms/pages/models.py:34
 msgid "updation date"
-msgstr "date de mise à jour"
+msgstr "updation date"
 
 #: molecules/cms/cms_logs/models.py:10 molecules/cms/cms_logs/models.py:19
 msgid "user"
@@ -122,19 +122,19 @@ msgstr "Go"
 
 #: templates/admin/pagination.html:7
 msgid "<"
-msgstr ""
+msgstr "<"
 
 #: templates/admin/pagination.html:9
 msgid ">"
-msgstr ""
+msgstr ">"
 
 #: templates/admin/pagination.html:10
 msgid "of"
-msgstr ""
+msgstr "of"
 
 #: templates/admin/pagination.html:14
 msgid "Items per page:"
-msgstr ""
+msgstr "Items per page:"
 
 #: templates/admin/pagination.html:23
 msgid "Save"
