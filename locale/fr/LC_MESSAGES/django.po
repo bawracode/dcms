@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 15:34+0530\n"
+"POT-Creation-Date: 2023-07-11 17:41+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,10 +33,6 @@ msgstr "Espagnole"
 #: app/settings.py:215
 msgid "German"
 msgstr "German"
-
-#: app/urls.py:26
-msgid "admin/"
-msgstr "admino/"
 
 #: molecules/cms/block/models.py:12 molecules/cms/pages/models.py:23
 msgid "title"
@@ -116,21 +112,9 @@ msgstr "Toggle sorting"
 msgid " By %(filter_title)s "
 msgstr " By %(filter_title)s "
 
-#: templates/admin/custom_text_input_filter.html:30
+#: templates/admin/custom_text_input_filter.html:47
 msgid "Go"
 msgstr "Go"
-
-#: templates/admin/pagination.html:7
-msgid "<"
-msgstr ""
-
-#: templates/admin/pagination.html:9
-msgid ">"
-msgstr ""
-
-#: templates/admin/pagination.html:10
-msgid "of"
-msgstr ""
 
 #: templates/admin/pagination.html:14
 msgid "Items per page:"
@@ -139,6 +123,12 @@ msgstr ""
 #: templates/admin/pagination.html:23
 msgid "Save"
 msgstr "Save"
+
+#: templates/admin/po_file_upload.html:100
+#, fuzzy
+#| msgid "admin/"
+msgid "admin"
+msgstr "admino/"
 
 #~ msgid "Show all"
 #~ msgstr "Show all"

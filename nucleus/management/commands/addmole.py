@@ -66,7 +66,7 @@ class Command(TemplateCommand):
 
         app_config_data = {
             'app_name': app_name,
-            'path': target,
+            'path': target.split(os.path.basename(Path(os.path.basename(__file__)).resolve().parent.parent))[-1]+"/config.json",
             'status': 'active',
             'jsfiles': [],
             'cssfiles': []

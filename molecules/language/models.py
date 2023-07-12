@@ -1,6 +1,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
+import os
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -47,4 +48,12 @@ class Profile(models.Model):
         ('eo', 'Esperanto'),
         
     ) )  # Field to store language preference
+    def save_model(self, request, obj, form, change):
+        os.system("python manage.py makemessages -l {}".format(self.language))
 
+# class Translate(models.Model):
+#     msgid = models.CharField(max_length=200)
+#     msgstr = models.CharField(max_length=200)
+
+#     def __str__(self):
+#         return self.msgid

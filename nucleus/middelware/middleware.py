@@ -44,7 +44,7 @@ class AdminLanguageMiddleware:
             translation.activate(language)
             
             print("python manage.py makemessages for ",language)
-            os.system("python manage.py makemessages -l {}".format(language))
+            # os.system("python manage.py makemessages -l {}".format(language))
             
         request.LANGUAGE_CODE = translation.get_language()
 
