@@ -59,6 +59,7 @@ installed_apps = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'eav',
     'django_toggle_switch_widget',
     'rest_framework',
     'rest_framework.authtoken',
