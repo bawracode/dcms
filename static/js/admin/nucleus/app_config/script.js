@@ -37,13 +37,12 @@ async function render_sub_section(section_name,data) {
   toggleVisibility(convertToClassName(section_name));
 
   if(checkSectionExistence(convertToClassName(section_name)) == 0){
-    console.log()
 
     for (let i = 0; i < Object.keys(data).length - 1; i++) {
       const sectionData = data["sub_section"];
   
       const div = document.createElement('div');
-      div.id = 'menu';
+      div.id = convertToClassName(section_name)
       div.classList.add(convertToClassName(section_name));
   
       const anchor_tag = document.createElement('a');
@@ -145,11 +144,28 @@ async function render_sub_section(section_name,data) {
         }
       } 
     }
-  
-    $(`#menu > a`).click(function () {
-      $(this).next().next().slideToggle();
+    
+    
+    document.querySelector(`#${convertToClassName(section_name)} > a`).addEventListener('click', function(event) {
+      event.stopPropagation();
+    
+      var nextElement = this.nextElementSibling.nextElementSibling;
+      if (nextElement.style.display === 'none') {
+        nextElement.style.display = 'block';
+      } else {
+        nextElement.style.display = 'none';
+      }
+           
       return false;
     });
+    // $(`#${convertToClassName(section_name)} > a`).click(function (event) {
+  
+    //   $(this).next().next().slideToggle();
+    //   console.log("Count :",count++);
+    //   console.log(this)
+    //   return false;
+    // });
+    
   }
   // configLink.innerHTML = '';
   
@@ -277,7 +293,7 @@ input.type = 'text';
 input.name = label;
 input.id = key;
 input.value = defaultValue || '';
-input.classList.add(key);
+input.classList.add(convertToClassName(key));
 
 const br = document.createElement('br');
 
