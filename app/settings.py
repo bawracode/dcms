@@ -9,12 +9,15 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
+
 import sys
 import os
 import environ
 from pathlib import Path
 from nucleus.management.compilation import Compilation
+from django.utils.translation import gettext_lazy as _
+
+sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
 
 
 env = environ.Env(
@@ -42,16 +45,33 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = []
 
 
+LIST_PER_CHOICES = [10, 20, 50, 100]
+
+
+
 # Application definition
 installed_apps = [
+    # "adminlte3",
+    # "adminlte3_theme",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'eav',
+    'django_toggle_switch_widget',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
+    'molecules',
     'nucleus',
+    'django_cron',
 ]
+CRON_CLASSES = [
+    'molecules.api.cron.ClearAPILogsCronJob',
+]
+
 
 # Read the dynamic apps list from the file
 dynamicappfile = os.path.join(compilation.compiled_dir, compilation.apps_file)
@@ -68,11 +88,16 @@ INSTALLED_APPS = installed_apps + [app for app in dynamic_apps if app not in ins
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'nucleus.middelware.middleware.RequestMiddleware',
+    'molecules.api.middlewares.APILogMiddleware',
+    'nucleus.middelware.middleware.AdminLanguageMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -80,7 +105,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +113,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -95,6 +121,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'api_calls.log',  # Specify the log file name and location
+        },
+    },
+    'loggers': {
+        'api_calls': {
+            'handlers': ['file', 'console'],  # Use both file and console handlers
+            'level': 'INFO',
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -136,11 +181,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -150,7 +197,26 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#for language
+
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('es', _('Spanish')),
+    ('de', _('German')),
+    
+)
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]

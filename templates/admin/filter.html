@@ -1,0 +1,36 @@
+{% load i18n %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+<script type="text/javascript">var go_from_select = function(opt) { window.location = window.location.pathname + opt };</script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    var go_from_select = function(opt) { window.location = window.location.pathname + opt };
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
+<h3>{% blocktrans with title as filter_title %} By {{ filter_title }} {% endblocktrans %}</h3>
+<ul class="admin-filter-{{ title|cut:' ' }}">
+{% if choices|slice:"2:" %}
+    <li>
+        <select class="select2" style="width: 95%; margin-left: 2%;" 
+        onchange="go_from_select(this.options[this.selectedIndex].value)">
+  
+    {% for choice in choices %}
+        <option{% if choice.selected %} selected="selected"{% endif %}
+         value="{{ choice.query_string|iriencode }}">{{ choice.display }}</option>
+    {% endfor %}
+    </select>
+    </li>
+{% else %}
+
+    {% for choice in choices %}
+        
+            <li{% if choice.selected %} class="selected"{% endif %}>
+            <a href="{{ choice.query_string|iriencode }}">{{ choice.display }}</a></li>
+    {% endfor %}
+
+{% endif %}
+</ul>

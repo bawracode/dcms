@@ -1,0 +1,79 @@
+{% load custom_filter.custom_filter static %}
+<link rel="stylesheet" href="{% static "/css/admin/custom_changelist.css"%}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+
+<ul class="sortable-list">
+  <div>
+  <h2 style="float:left;margin:10px">Column Mapper</h2>
+  
+    <button style="float:right"  onclick="closePopupModel();"><img src="/static/admin/img/icon-deletelink.svg" alt="True"></button>
+  </div>
+  <hr>
+    {% for i in column_names%}
+  <li class="item" draggable="true">
+    <div class="details">
+      
+      <input type="checkbox" id="chk{{i.column_name}}" {%if i.visible %} checked {%endif%}>
+
+      <span style="margin-left:50px">{{i.column_name}}</span>
+    </div>
+    <i class="uil uil-draggabledots"></i>
+  </li>
+  {%endfor%}
+</ul>
+<button type="button" class="button"  onclick="savePopupModel({{serialized_data}},'{{csrf_token}}','{{path_model}}');">Save</button>
+
+
+
+
+
+<script defer>
+  const sortableList = document.querySelector(".sortable-list");
+  const items = sortableList.querySelectorAll(".item");
+  
+  
+
+  
+  
+      items.forEach(item => {
+          item.addEventListener("dragstart", () => {
+              // Adding dragging class to item after a delay
+              setTimeout(() => item.classList.add("dragging"), 0);
+          });
+          // Removing dragging class from item on dragend event
+          item.addEventListener("dragend", () => {
+            item.classList.remove("dragging");
+            {% comment %} logUpdatedOrder(); // Call the function to log the updated order {% endcomment %}
+          });
+          
+      });
+      
+      const initSortableList = (e) => {
+          e.preventDefault();
+          const draggingItem = document.querySelector(".dragging");
+          // Getting all items except currently dragging and making array of them
+          let siblings = [...sortableList.querySelectorAll(".item:not(.dragging)")];
+      
+          // Finding the sibling after which the dragging item should be placed
+          let nextSibling = siblings.find(sibling => {
+              return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+          });
+      
+          // Inserting the dragging item before the found sibling
+          sortableList.insertBefore(draggingItem, nextSibling);
+          
+        }
+      
+      
+      sortableList.addEventListener("dragover", initSortableList);
+      sortableList.addEventListener("dragenter", e => e.preventDefault());
+      function logUpdatedOrder() {
+        const updatedOrder = [...sortableList.querySelectorAll(".item")].map(item => item.querySelector("span").textContent);
+        console.log(updatedOrder);
+        
+        
+      }
+</script>
+
