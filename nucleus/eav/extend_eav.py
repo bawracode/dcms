@@ -11,22 +11,23 @@ def get_entity_pk_type(entity_cls) -> str:
     These values map to `models.Value` as potential fields to use to relate
     to the proper entity via the correct PK type.
     """
-
     if isinstance(entity_cls._meta.pk, UUIDField):
         return 'entity_uuid'
     return 'entity_id'
 
 
-
 class ExtendEavValue(Value):
     
+    class Meta:
+        proxy = True
+
     language = models.CharField(
         max_length=10,
         default='en',
         blank=True,
         null=True,
         verbose_name=_('Language'),
-    ) 
+    )
 
 
 
@@ -38,7 +39,7 @@ class ExtendEavEntity(Entity):
 
     def get_language(self):
         return self.language
-    
+
     def get_values(self):
         """Get all set :class:`Value` objects for self.instance."""
         entity_filter = {
@@ -47,19 +48,15 @@ class ExtendEavEntity(Entity):
         }
 
         try:
-            result = Value.objects.filter(**entity_filter, language=self.language).select_related()
+            result = ExtendEavValue.objects.filter(**entity_filter, language=self.language).select_related()
 
             if result.count() == 0:
-                result = Value.objects.filter(**entity_filter).select_related()
+                result = ExtendEavValue.objects.filter(**entity_filter).select_related()
 
         except:
             # This is a hack to allow for the fact that the django-eav2
             # Value model does not have a language field, but the
             # django-eav Value model does.
-
-            result = Value.objects.filter(**entity_filter).select_related()
+            result = ExtendEavValue.objects.filter(**entity_filter).select_related()
 
         return result
-
-
-    
