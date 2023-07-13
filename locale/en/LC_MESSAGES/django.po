@@ -2,13 +2,17 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 18:33+0530\n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2023-07-11 16:37+0530\n"
+=======
+"POT-Creation-Date: 2023-07-11 16:45+0530\n"
+>>>>>>> 65dbb91c7c143128f1c1143192716c832779a80c
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +24,7 @@ msgstr ""
 
 #: .\app\settings.py:213
 msgid "English"
-msgstr "English"
+msgstr ""
 
 #: .\app\settings.py:214
 msgid "French"
@@ -50,17 +54,17 @@ msgstr "content"
 msgid "status"
 msgstr "status"
 
-#: .\molecules\cms\block\models.py:26
+#: molecules/cms/block/models.py:26
 msgid "block_status"
-msgstr "block_status"
+msgstr "block status"
 
-#: .\molecules\cms\block\models.py:34 .\molecules\cms\cms_logs\models.py:13
-#: .\molecules\cms\cms_logs\models.py:22 .\molecules\cms\pages\models.py:33
+#: molecules/cms/block/models.py:34 molecules/cms/cms_logs/models.py:13
+#: molecules/cms/cms_logs/models.py:22 molecules/cms/pages/models.py:33
 msgid "creation date"
 msgstr "creation date"
 
-#: .\molecules\cms\block\models.py:35 .\molecules\cms\cms_logs\models.py:14
-#: .\molecules\cms\cms_logs\models.py:23 .\molecules\cms\pages\models.py:34
+#: molecules/cms/block/models.py:35 molecules/cms/cms_logs/models.py:14
+#: molecules/cms/cms_logs/models.py:23 molecules/cms/pages/models.py:34
 msgid "updation date"
 msgstr "updation date"
 
@@ -72,7 +76,7 @@ msgstr "user"
 msgid "action"
 msgstr "action"
 
-#: .\molecules\cms\cms_logs\models.py:12 .\molecules\cms\cms_logs\models.py:21
+#: molecules/cms/cms_logs/models.py:12 molecules/cms/cms_logs/models.py:21
 msgid "ip address"
 msgstr "ip address"
 
@@ -80,44 +84,47 @@ msgstr "ip address"
 msgid "Home"
 msgstr "Home"
 
-#: .\templates\admin\change_list.html:104
+#: templates/admin/change_list.html:104
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\templates\admin\change_list.html:132
+#: templates/admin/change_list.html:132
 msgid "Filter"
-msgstr "Filter"
+msgstr "filler"
 
-#: .\templates\admin\change_list.html:134
+#: templates/admin/change_list.html:134
 msgid "Clear all filters"
 msgstr "Clear all filters"
 
-#: .\templates\admin\change_list_results.html:16
+#: templates/admin/change_list_results.html:16
 msgid "Remove from sorting"
 msgstr "Remove from sorting"
 
-#: .\templates\admin\change_list_results.html:17
+#: templates/admin/change_list_results.html:17
 #, python-format
 msgid "Sorting priority: %(priority_number)s"
-msgstr "Sorting priority: %(priority_number)s"
+msgstr "Sorting priority: %(priority number)s"
 
-#: .\templates\admin\change_list_results.html:18
+#: templates/admin/change_list_results.html:18
 msgid "Toggle sorting"
 msgstr "Toggle sorting"
 
-#: .\templates\admin\custom_text_dropdown.html:14
-#: .\templates\admin\filter.html:14
+#: templates/admin/custom_text_dropdown.html:14 templates/admin/filter.html:14
 #, python-format
 msgid " By %(filter_title)s "
-msgstr " By %(filter_title)s "
+msgstr " By %(filter title)s "
 
 #: .\templates\admin\custom_text_input_filter.html:47
 msgid "Go"
+<<<<<<< HEAD
+msgstr "GoaS"
+=======
 msgstr "Go"
+>>>>>>> 65dbb91c7c143128f1c1143192716c832779a80c
 
-#: .\templates\admin\pagination.html:14
+#: templates/admin/pagination.html:14
 msgid "Items per page:"
 msgstr "Items per page:"
 
@@ -125,6 +132,17 @@ msgstr "Items per page:"
 msgid "Save"
 msgstr "Save"
 
-#: .\templates\admin\po_file_upload.html:100
+#: templates/admin/po_file_upload.html:100
+#, fuzzy
+#| msgid "admin/"
 msgid "admin"
-msgstr "admin"
+msgstr "admin/"
+
+#~ msgid "admin/"
+#~ msgstr "admin/"
+
+#~ msgid "Show all"
+#~ msgstr "Show all"
+
+#~ msgid "Italian"
+#~ msgstr "Italian"
