@@ -7,6 +7,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.urls import path ,include
 from rest_framework.authtoken.views import obtain_auth_token
+from django.views.generic.base import RedirectView as Redirectview
 
 
 

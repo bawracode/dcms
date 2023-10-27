@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-17 17:30+0530\n"
+"POT-Creation-Date: 2023-07-13 10:20+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,197 +16,103 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/settings.py:215
+#: app/settings.py:213
 msgid "English"
 msgstr ""
 
-#: app/settings.py:216
+#: app/settings.py:214
 msgid "French"
-msgstr "French"
+msgstr ""
 
-#: app/settings.py:217
+#: app/settings.py:215
 msgid "Spanish"
-msgstr "Spanish"
+msgstr ""
 
-#: app/settings.py:218
+#: app/settings.py:216
 msgid "German"
-msgstr "German"
+msgstr ""
 
 #: molecules/cms/block/models.py:12 molecules/cms/pages/models.py:23
 msgid "title"
-msgstr "title"
+msgstr ""
 
 #: molecules/cms/block/models.py:13 molecules/cms/pages/models.py:24
 msgid "slug"
-msgstr "slug"
+msgstr ""
 
 #: molecules/cms/block/models.py:14 molecules/cms/pages/models.py:25
 msgid "content"
-msgstr "content"
+msgstr ""
 
-#: molecules/cms/block/models.py:16 nucleus/mail/models.py:52
+#: molecules/cms/block/models.py:16
 msgid "status"
-msgstr "status"
+msgstr ""
 
 #: molecules/cms/block/models.py:26
-#, fuzzy
-#| msgid "block status"
 msgid "block_status"
-msgstr "block status"
+msgstr ""
 
 #: molecules/cms/block/models.py:34 molecules/cms/cms_logs/models.py:13
 #: molecules/cms/cms_logs/models.py:22 molecules/cms/pages/models.py:33
-#, fuzzy
-#| msgid "creation_date"
 msgid "creation date"
-msgstr "creation date"
+msgstr ""
 
 #: molecules/cms/block/models.py:35 molecules/cms/cms_logs/models.py:14
 #: molecules/cms/cms_logs/models.py:23 molecules/cms/pages/models.py:34
-#, fuzzy
-#| msgid "updation_date"
 msgid "updation date"
-msgstr "updation date"
+msgstr ""
 
 #: molecules/cms/cms_logs/models.py:10 molecules/cms/cms_logs/models.py:19
 msgid "user"
-msgstr "user"
+msgstr ""
 
 #: molecules/cms/cms_logs/models.py:11 molecules/cms/cms_logs/models.py:20
 msgid "action"
-msgstr "action"
+msgstr ""
 
 #: molecules/cms/cms_logs/models.py:12 molecules/cms/cms_logs/models.py:21
-#, fuzzy
-#| msgid "ip_address"
 msgid "ip address"
-msgstr "ip address"
-
-#: nucleus/mail/models.py:14
-msgid "mail_template"
-msgstr ""
-
-#: nucleus/mail/models.py:18
-msgid "Mail template log"
-msgstr ""
-
-#: nucleus/mail/models.py:19
-msgid "Mail template logs"
-msgstr ""
-
-#: nucleus/mail/models.py:48
-msgid "name"
-msgstr ""
-
-#: nucleus/mail/models.py:49
-msgid "code"
-msgstr ""
-
-#: nucleus/mail/models.py:50
-msgid "subject"
-msgstr ""
-
-#: nucleus/mail/models.py:51
-msgid "body"
-msgstr ""
-
-#: nucleus/mail/models.py:54
-msgid "from_email"
-msgstr ""
-
-#: nucleus/mail/models.py:57
-msgid "event"
-msgstr ""
-
-#: nucleus/mail/models.py:64 nucleus/mail/models.py:65
-msgid "Mail Templates"
-msgstr ""
-
-#: nucleus/mail/models.py:95
-msgid "host"
-msgstr ""
-
-#: nucleus/mail/models.py:96
-msgid "port"
-msgstr ""
-
-#: nucleus/mail/models.py:97
-#, fuzzy
-#| msgid "user"
-msgid "username"
-msgstr "user"
-
-#: nucleus/mail/models.py:98
-msgid "password"
-msgstr ""
-
-#: nucleus/mail/models.py:99
-#, fuzzy
-#| msgid "action"
-msgid "active"
-msgstr "action"
-
-#: nucleus/mail/models.py:118
-msgid "SMTP Configuration"
-msgstr ""
-
-#: nucleus/mail/models.py:119
-msgid "SMTP Configurations"
 msgstr ""
 
 #: templates/admin/change_list.html:67
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #: templates/admin/change_list.html:133
 msgid "Filter"
-msgstr "filler"
+msgstr ""
 
 #: templates/admin/change_list.html:135
-#, fuzzy
-#| msgid "Clear_all_filters"
 msgid "Clear all filters"
-msgstr "Clear all filters"
+msgstr ""
 
 #: templates/admin/change_list_results.html:16
-#, fuzzy
-#| msgid "Remove_from_sorting"
 msgid "Remove from sorting"
-msgstr "Remove from sorting"
+msgstr ""
 
 #: templates/admin/change_list_results.html:17
-#, fuzzy, python-format
-#| msgid "Sorting_priority:_%(priority_number)s"
+#, python-format
 msgid "Sorting priority: %(priority_number)s"
-msgstr "Sorting priority: %(priority number)s"
+msgstr ""
 
 #: templates/admin/change_list_results.html:18
-#, fuzzy
-#| msgid "Toggle_sorting"
 msgid "Toggle sorting"
-msgstr "Toggle sorting"
+msgstr ""
 
 #: templates/admin/custom_text_dropdown.html:14 templates/admin/filter.html:14
-#, fuzzy, python-format
-#| msgid "_By_%(filter_title)s_"
+#, python-format
 msgid " By %(filter_title)s "
-msgstr " By %(filter title)s "
+msgstr ""
 
 #: templates/admin/custom_text_input_filter.html:47
 msgid "Go"
-msgstr "Go"
+msgstr ""
 
 #: templates/admin/pagination.html:14
-#, fuzzy
-#| msgid "Items_per_page:"
 msgid "Items per page:"
-msgstr "Items per page:"
+msgstr ""
 
 #: templates/admin/pagination.html:23
 msgid "Save"
-msgstr "Save"
-
-#~ msgid "admin"
-#~ msgstr "admin"
+msgstr ""

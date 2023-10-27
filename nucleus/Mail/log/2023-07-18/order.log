@@ -1,0 +1,34 @@
+[2023-07-18 12:41:08.980087] [Random: 803] Mail --not-- send for order to jashkk5@gmail.com immediately due to SMTP AUTH extension not supported by server.
+[2023-07-18 12:42:38.025030] [Random: 917] Mail --not-- send for order to jashkk5@gmail.com immediately due to SMTP AUTH extension not supported by server.
+[2023-07-18 12:56:47.793660] [Random: 596] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 12:56:50.122422] [Random: 314] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 12:57:23.093182] [Random: 263] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 12:58:16.032686] [Random: 242] Mail --not-- send for order to ['jashkk5@gmail.com', 'jashcontact750@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com', 'jashcontact750@gmail.com']"
+[2023-07-18 13:03:15.033662] [Random: 239] Mail --not-- send for order to ['jashkk5@gmail.com', 'jashcontact750@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com', 'jashcontact750@gmail.com']"
+[2023-07-18 13:04:46.986697] [Random: 611] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 13:09:00.728746] [Random: 355] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 13:09:47.798680] [Random: 833] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 13:10:01.141275] [Random: 570] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 13:10:07.799426] [Random: 795] Mail --not-- send for order to jashkk5@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:10:23.669028] [Random: 553] Mail --not-- send for order to jashkk5@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:10:30.463402] [Random: 586] Mail --not-- send for order to jashkk5@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:11:03.285979] [Random: 110] Mail --not-- send for order to jashkk5@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:11:12.822726] [Random: 259] Mail --not-- send for order to  from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:11:18.253389] [Random: 109] Mail --not-- send for order to jashkk5@gma from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:11:31.752135] [Random: 39] Mail --not-- send for order to jashkk5@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address "['']"
+[2023-07-18 13:12:01.575795] [Random: 615] Mail send for order to jashkk5@gmail.com immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:13:04.914414] [Random: 721] Mail send for order to jashkk5@gmail.com immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:13:16.794953] [Random: 986] Mail --not-- send for order to ['jashkk5@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com']"
+[2023-07-18 13:13:43.956497] [Random: 327] Mail send for order to jashkk5@gmail.com immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:14:07.587013] [Random: 378] Mail --not-- send for order to jashkk5@gmail.com,jashcontact750@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address; only jashkk5@gmail.com could be parsed from "jashkk5@gmail.com,jashcontact750@gmail.com"
+[2023-07-18 13:14:10.248472] [Random: 909] Mail --not-- send for order to jashkk5@gmail.com,jashcontact750@gmail.com from jashkakadiya18@gmail.com immediately due to Invalid address; only jashkk5@gmail.com could be parsed from "jashkk5@gmail.com,jashcontact750@gmail.com"
+[2023-07-18 13:14:32.775879] [Random: 191] Mail --not-- send for order to ['jashkk5@gmail.com', 'jashcontact750@gmail.com'] from jashkakadiya18@gmail.com immediately due to Invalid address "['jashkk5@gmail.com', 'jashcontact750@gmail.com']"
+[2023-07-18 13:14:49.615550] [Random: 307] Mail send for order to ['jashkk5@gmail.com', 'jashcontact750@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:15:26.673213] [Random: 893] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:16:56.578521] [Random: 334] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:17:09.452461] [Random: 868] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:17:17.265877] [Random: 15] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:17:30.568307] [Random: 181] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:17:38.148717] [Random: 840] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:17:47.038310] [Random: 962] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com
+[2023-07-18 13:19:00.288292] [Random: 926] Mail send for order to ['jashkk5@gmail.com'] immediately from jashkakadiya18@gmail.com

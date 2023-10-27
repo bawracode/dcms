@@ -1,6 +1,6 @@
 {
-    "app_name": "Mail",
-    "path": "/cms/nucleus/Mail/config.json",
+    "app_name": "mail",
+    "path": "/cms/nucleus/mail/config.json",
     "status": "active",
     "jsfiles": [],
     "cssfiles": []

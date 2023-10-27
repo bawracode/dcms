@@ -9,6 +9,6 @@
     "molecules.test3": "active",
     "molecules.test2": "active",
     "molecules.cron": "active",
-    "nucleus.Mail": "active",
+    "nucleus.mail": "active",
     "nucleus.users": "active"
 }

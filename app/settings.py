@@ -16,7 +16,6 @@ import environ
 from pathlib import Path
 from nucleus.management.compilation import Compilation
 from django.utils.translation import gettext_lazy as _
-
 sys.path.append(os.path.join(Path(__file__).resolve().parent , 'nucleus'))
 
 
@@ -51,8 +50,11 @@ LIST_PER_CHOICES = [10, 20, 50, 100]
 
 # Application definition
 installed_apps = [
+        'django_crontab',
     # "adminlte3",
     # "adminlte3_theme",
+'ckeditor',
+'django_quill',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,6 +73,19 @@ installed_apps = [
 CRON_CLASSES = [
     'molecules.api.cron.ClearAPILogsCronJob',
 ]
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}
 
 
 # Read the dynamic apps list from the file
@@ -97,10 +112,19 @@ MIDDLEWARE = [
     'nucleus.middelware.middleware.RequestMiddleware',
     'molecules.api.middlewares.APILogMiddleware',
     'nucleus.middelware.middleware.AdminLanguageMiddleware',
+    'nucleus.middelware.middleware.ThreadLocalMiddleware',
     
-]
+] 
 
+MAIL_COMMUNICATION = True  # Set to True to enable mail communication
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'student.gec416@gmail.com'
+EMAIL_HOST_PASSWORD = 'hbvssudopkryurlh' 
 ROOT_URLCONF = 'app.urls'
+EMAIL_USE_TLS = True
+
 
 TEMPLATES = [
     {
@@ -220,3 +244,9 @@ LANGUAGES = (
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
+
+CRONJOBS = [
+    ('0 1 * * *', 'molecules.api.cron.ClearAPILogsCronJob'),
+    ('0 11 * * *', 'nucleus.mail.cronjob.cron.execute_cron_job')
+]
+

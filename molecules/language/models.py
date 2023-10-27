@@ -1,6 +1,9 @@
 
-from django.contrib.auth.models import User
+from django.core.management import call_command
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 import os
 
 class Profile(models.Model):
@@ -48,12 +51,10 @@ class Profile(models.Model):
         ('eo', 'Esperanto'),
         
     ) )  # Field to store language preference
-    def save_model(self, request, obj, form, change):
-        os.system("python manage.py makemessages -l {}".format(self.language))
 
-# class Translate(models.Model):
-#     msgid = models.CharField(max_length=200)
-#     msgstr = models.CharField(max_length=200)
+@receiver(post_save, sender=Profile)
+def generate_messages(sender, instance, created, **kwargs):
+    os.system("python manage.py makemessages -l {}".format(instance.language))
 
-#     def __str__(self):
-#         return self.msgid
+
+post_save.connect(generate_messages, sender=Profile)

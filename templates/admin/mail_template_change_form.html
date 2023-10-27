@@ -1,0 +1,24 @@
+{% extends "admin/change_form.html" %}
+{% block after_related_objects %}
+{{ block.super }}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    document.querySelector('.field-from_email').style.display = 'none';
+    from_email = document.querySelector('#id_other');
+    from_email.value="on"
+    from_email.addEventListener('click', function() {
+        if (from_email.value == "on"){
+            document.querySelector('.field-from_email').style.display = 'block';
+            from_email.value="off"}
+        else{
+            document.querySelector('.field-from_email').style.display = 'none';
+            from_email.value="on"
+        }
+
+      console.log(from_email.value);
+    })
+</script>
+
+{% endblock %}

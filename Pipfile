@@ -18,6 +18,12 @@ django-cron = "*"
 django-rosetta = "*"
 numpy = "*"
 polib = "*"
+django-eav2 = "*"
+python-crontab = "*"
+django-crontab = "*"
+django-aloha-edit = "*"
+django-ckeditor = "*"
+django-quill-editor = "*"
 
 [dev-packages]
 

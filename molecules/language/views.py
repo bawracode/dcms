@@ -24,15 +24,13 @@ def po_file_view(request):
     base_dir = settings.BASE_DIR
     language = Profile.objects.get(user=request.user).language
     po = polib.pofile(os.path.join(base_dir, 'locale', language, 'LC_MESSAGES', 'django.po'))
-    print(type(po))
     if request.method == 'POST':
         if 'save' in request.POST:
             po_txt = request.POST.get('my_textarea')
             po_file_path = os.path.join(base_dir, 'locale', language, 'LC_MESSAGES', 'django.po')
             with open(po_file_path, 'w') as po_file:
                 po_file.write(po_txt)
-            os.system(f'python manage.py makemessages -l {language}')
-            # return HttpResponse('File saved successfully')
+            os.system(f'python manage.py compilemessages')
             return redirect('/admin/')
             
     return render(request, 'admin/po_file_editor.html', {'po_file_full':po})
