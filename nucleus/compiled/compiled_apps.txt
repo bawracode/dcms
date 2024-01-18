@@ -1,0 +1,12 @@
+molecules.test1
+molecules.app_config
+molecules.language
+molecules.cms.cms_logs
+molecules.cms.pages
+molecules.cms.block
+molecules.api
+molecules.test3
+molecules.test2
+molecules.cron
+nucleus.mail
+nucleus.users

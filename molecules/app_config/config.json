@@ -1,0 +1,25 @@
+{
+    "app_name": "app_config",
+    "path": "/cms/molecules/app_config/config.json",
+    "status": "active",
+    "jsfiles": [
+        {
+            "src": "/static/js/admin/script.js",
+            "defer": true
+        },
+        {
+            "src": "/static/js/admin/nucleus/app_config/script.js",
+            "defer": true
+        }
+    ],
+    "cssfiles": [
+        {
+            "src": "/static/css/admin/style.css",
+            "defer": true
+        },
+        {
+            "src": "/static/css/admin/nucleus/app_config/style.css",
+            "defer": true
+        }
+    ]
+}

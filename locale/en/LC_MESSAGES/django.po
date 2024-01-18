@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2023-07-17 17:30+0530\n"
+=======
+"POT-Creation-Date: 2023-07-11 16:45+0530\n"
+>>>>>>> cac054fe1f9366b7aca8595549464419cb39ec8d
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/settings.py:215
+msgid "English"
+msgstr ""
+
+#: app/settings.py:216
+msgid "French"
+msgstr "French"
+
+#: app/settings.py:217
+msgid "Spanish"
+msgstr "Spanish"
+
+#: app/settings.py:218
+msgid "German"
+msgstr "German"
+
+#: molecules/cms/block/models.py:12 molecules/cms/pages/models.py:23
+msgid "title"
+msgstr "title"
+
+#: molecules/cms/block/models.py:13 molecules/cms/pages/models.py:24
+msgid "slug"
+msgstr "slug"
+
+#: molecules/cms/block/models.py:14 molecules/cms/pages/models.py:25
+msgid "content"
+msgstr "content"
+
+#: molecules/cms/block/models.py:16 nucleus/mail/models.py:52
+msgid "status"
+msgstr "status"
+
+#: molecules/cms/block/models.py:26
+#, fuzzy
+#| msgid "block status"
+msgid "block_status"
+msgstr "block status"
+
+#: molecules/cms/block/models.py:34 molecules/cms/cms_logs/models.py:13
+#: molecules/cms/cms_logs/models.py:22 molecules/cms/pages/models.py:33
+#, fuzzy
+#| msgid "creation_date"
+msgid "creation date"
+msgstr "creation date"
+
+#: molecules/cms/block/models.py:35 molecules/cms/cms_logs/models.py:14
+#: molecules/cms/cms_logs/models.py:23 molecules/cms/pages/models.py:34
+#, fuzzy
+#| msgid "updation_date"
+msgid "updation date"
+msgstr "updation date"
+
+#: molecules/cms/cms_logs/models.py:10 molecules/cms/cms_logs/models.py:19
+msgid "user"
+msgstr "user"
+
+#: molecules/cms/cms_logs/models.py:11 molecules/cms/cms_logs/models.py:20
+msgid "action"
+msgstr "action"
+
+#: molecules/cms/cms_logs/models.py:12 molecules/cms/cms_logs/models.py:21
+#, fuzzy
+#| msgid "ip_address"
+msgid "ip address"
+msgstr "ip address"
+
+#: nucleus/mail/models.py:14
+msgid "mail_template"
+msgstr ""
+
+#: nucleus/mail/models.py:18
+msgid "Mail template log"
+msgstr ""
+
+#: nucleus/mail/models.py:19
+msgid "Mail template logs"
+msgstr ""
+
+#: nucleus/mail/models.py:48
+msgid "name"
+msgstr ""
+
+#: nucleus/mail/models.py:49
+msgid "code"
+msgstr ""
+
+#: nucleus/mail/models.py:50
+msgid "subject"
+msgstr ""
+
+#: nucleus/mail/models.py:51
+msgid "body"
+msgstr ""
+
+#: nucleus/mail/models.py:54
+msgid "from_email"
+msgstr ""
+
+#: nucleus/mail/models.py:57
+msgid "event"
+msgstr ""
+
+#: nucleus/mail/models.py:64 nucleus/mail/models.py:65
+msgid "Mail Templates"
+msgstr ""
+
+#: nucleus/mail/models.py:95
+msgid "host"
+msgstr ""
+
+#: nucleus/mail/models.py:96
+msgid "port"
+msgstr ""
+
+#: nucleus/mail/models.py:97
+#, fuzzy
+#| msgid "user"
+msgid "username"
+msgstr "user"
+
+#: nucleus/mail/models.py:98
+msgid "password"
+msgstr ""
+
+#: nucleus/mail/models.py:99
+#, fuzzy
+#| msgid "action"
+msgid "active"
+msgstr "action"
+
+#: nucleus/mail/models.py:118
+msgid "SMTP Configuration"
+msgstr ""
+
+#: nucleus/mail/models.py:119
+msgid "SMTP Configurations"
+msgstr ""
+
+#: templates/admin/change_list.html:67
+msgid "Home"
+msgstr "Home"
+
+#: templates/admin/change_list.html:133
+msgid "Filter"
+msgstr "filler"
+
+#: templates/admin/change_list.html:135
+#, fuzzy
+#| msgid "Clear_all_filters"
+msgid "Clear all filters"
+msgstr "Clear all filters"
+
+#: templates/admin/change_list_results.html:16
+#, fuzzy
+#| msgid "Remove_from_sorting"
+msgid "Remove from sorting"
+msgstr "Remove from sorting"
+
+#: templates/admin/change_list_results.html:17
+#, fuzzy, python-format
+#| msgid "Sorting_priority:_%(priority_number)s"
+msgid "Sorting priority: %(priority_number)s"
+msgstr "Sorting priority: %(priority number)s"
+
+#: templates/admin/change_list_results.html:18
+#, fuzzy
+#| msgid "Toggle_sorting"
+msgid "Toggle sorting"
+msgstr "Toggle sorting"
+
+#: templates/admin/custom_text_dropdown.html:14 templates/admin/filter.html:14
+#, fuzzy, python-format
+#| msgid "_By_%(filter_title)s_"
+msgid " By %(filter_title)s "
+msgstr " By %(filter title)s "
+
+#: templates/admin/custom_text_input_filter.html:47
+msgid "Go"
+msgstr "Go"
+
+#: templates/admin/pagination.html:14
+#, fuzzy
+#| msgid "Items_per_page:"
+msgid "Items per page:"
+msgstr "Items per page:"
+
+#: templates/admin/pagination.html:23
+msgid "Save"
+msgstr "Save"
+
+#~ msgid "admin"
+#~ msgstr "admin"

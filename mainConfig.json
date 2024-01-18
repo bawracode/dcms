@@ -1,0 +1,14 @@
+{
+    "molecules.test1": "active",
+    "molecules.app_config": "active",
+    "molecules.language": "active",
+    "molecules.cms.cms_logs": "active",
+    "molecules.cms.pages": "active",
+    "molecules.cms.block": "active",
+    "molecules.api": "active",
+    "molecules.test3": "active",
+    "molecules.test2": "active",
+    "molecules.cron": "active",
+    "nucleus.mail": "active",
+    "nucleus.users": "active"
+}

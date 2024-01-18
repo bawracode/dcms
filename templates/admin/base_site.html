@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style>
+    /* Custom CSS styles for the anchor tag */
+    .custom-header-link {
+      display: inline-block;
+      margin-right: 20px;
+      color: #fff;
+      text-decoration: solid;
+      border-bottom: 1px solid #fff;
+    }
+  </style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">CMS</a></h1>
+<h4 id="site-name">
+    <a class="custom-header-link" href='/language/upload-po/'>Language lables</a>
+    {% block branding_text %}
+    {% endblock %}
+</h4>
+{% endblock %}
+
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}

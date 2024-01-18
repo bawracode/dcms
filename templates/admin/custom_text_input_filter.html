@@ -1,0 +1,49 @@
+{% load i18n admin_list %}
+<script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        // Get the URL parameter
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const params = {};
+        
+        // Iterate over the query parameters and store them in the params object
+        urlParams.forEach(function(value, key) {
+            params[key] = value;
+        });
+        
+        // Use the params object in your code
+        if (params.{{title}}!=null)
+        {
+            document.getElementById("{{title}}Text").value=params.{{title}};
+        }
+        
+      });
+    {% comment %} var go_from_select = function(value) {
+        event.preventDefault();
+        alert("test");
+        
+        window.location = window.location.pathname + '?{{ title }}='+value
+        
+    }; {% endcomment %}
+    $(document).ready(function() {
+        const url = new URL(window.location.href);
+        $('#{{title}}Button').click(function(event) {
+            event.preventDefault(); 
+            
+            value=$('#{{ title }}Text').val()
+           
+            url.searchParams.set('{{ title }}',value);
+            window.location = url
+            
+        });
+    });
+</script>
+<h3>By {{ title }}</h3>
+<div class="input-group" style="margin: 5%;">
+    <input type="text" style="width:60% " id="{{title}}Text" class="form-control">
+    <span class="input-group-btn">
+        <button type="button" class="button" id="{{title}}Button" >
+    {% trans 'Go' %}
+</button>
+    </span>
+</div>

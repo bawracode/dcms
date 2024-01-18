@@ -1,0 +1,122 @@
+{% load admin_list %}
+{% load i18n get_settings.get_settings %}
+{% get_list_choices as list_choices %}
+<p class="paginator">
+{% if pagination_required %}
+
+  <a href="#" class="button" id="previous-link"><</a>
+  <input type="number" id="input_page_number" style="width:5%">
+  <a href="#" class="button" id="next-link">></a>
+  <span>of <span id="num_pages">{{ cl.paginator.num_pages }}</span></span>
+  
+  
+{% endif %}
+<label for="list_per_page_select">{% translate 'Items per page:' %}</label>
+      <select id="list_per_page_select">
+        {% for choice in list_choices %}
+          <option value="{{ choice }}" {% if choice == cl.list_per_page %}selected{% endif %}>{{ choice }}</option>
+        {% endfor %}
+      </select>
+<b>{{ cl.result_count }} {% if cl.result_count == 1 %}{{ cl.opts.verbose_name }}{% else %}{{ cl.opts.verbose_name_plural }}{% endif %}</b>
+{% comment %} {% if show_all_url %}<a href="{{ show_all_url }}" class="showall">{% translate 'Show all' %}</a>{% endif %} {% endcomment %}
+{% if cl.formset and cl.result_count %}<input type="submit" name="_save" class="default" value="{% translate 'Save' %}">{% endif %}
+
+</p>
+
+
+
+<script>
+    $(document).ready(function() {
+
+        const input = $('#input_page_number');
+        const previousLink = $('#previous-link');
+        const nextLink = $('#next-link');
+
+        let inputValue; // Store the initial value of the input field
+
+        input.on('focus', function() {
+            inputValue = input.val(); // Store the initial value when the input gains focus
+          });
+        input.on('blur', function() {
+            input.val(inputValue);
+          });
+        
+        input.on('keydown', function(event) {
+          
+          if (event.which === 13) {
+            event.preventDefault();
+            const pageNumber = input.val(); // Change this to the desired page number
+            if(pageNumber<={{cl.paginator.num_pages}})
+            {
+            
+            // Get the current URL
+            const url = new URL(window.location.href);
+            
+            // Update the query string parameter 'p' with the desired page number
+            url.searchParams.set('p', pageNumber);
+            
+            // Reload the page with the updated URL
+            window.location.href = url.toString();
+            }
+            else{
+
+              
+          }
+          }
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+       
+        const currentPage = parseInt(urlParams.get('p')) || 1;
+        const previousParams = urlParams.toString();
+        
+        urlParams.delete('p');
+
+        if (currentPage > 1) {
+          urlParams.set('p', currentPage - 1);
+          previousLink.attr('href', '?' + urlParams.toString());
+        }
+
+        if (currentPage < {{ cl.paginator.num_pages }}) {
+          urlParams.set('p', currentPage + 1);
+          nextLink.attr('href', '?' + urlParams.toString() );
+        }
+        if(currentPage){
+            input.val(currentPage);
+        }
+
+
+        $('#list_per_page_select').on('change', function() {
+          const url = new URL(window.location.href);
+          const value = $(this).val();
+          console.log(url.pathname)
+          $.ajax({
+            url: url.pathname+"?list_per_page="+value,
+            method: "GET", // Use GET method
+            success: function(response) {
+              location.reload(true)
+            },
+            error: function(xhr, status, error) {
+              console.log("Endgame")
+            }
+          });
+
+          {% comment %} const value = $(this).val();
+
+          const url = new URL(window.location.href);
+          
+
+          if (url.searchParams.has('e')) {
+            url.searchParams.delete('e');
+          }
+          url.searchParams.set('list_per_page', value);  // Add the desired query parameter
+          
+          
+          window.location.href = url.toString();  {% endcomment %}
+
+         
+          
+        });
+      });
+      
+   
+  </script>
